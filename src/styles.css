@@ -30,36 +30,39 @@
   font-size: 100px;
   text-align: center;
 
-  & .flapTop,
-  & .flapBottom {
-    animation-duration: 100ms;
-    position: relative;
-    left: 0;
+  & .flap {
+    background-color: white;
+    animation-duration: 300ms;
+    position: absolute;
     height: calc(50% - 1px);
+    width: 100%;
     overflow: hidden;
+    text-align: center;
   }
 
-  & .flapTop {
-    top: 0px;
+  & .top {
+    top: 0;
 
     &.animated {
       animation-name: upperFlap;
+      animation-fill-mode: forwards;
       transform-origin: bottom;
     }
   }
 
-  & .flapBottom {
-    bottom: -2px;
+  & .bottom {
+    top: calc(50% + 1px);
 
     &.animated {
       animation-name: lowerFlap;
+      animation-fill-mode: forwards;
       transform-origin: top;
     }
 
     & div {
-      width: 100%;
       position: absolute;
-      bottom: 0;
+      top: -100%;
+      width: 100%;
     }
   }
 }
