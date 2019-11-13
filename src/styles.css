@@ -35,13 +35,12 @@
     animation-duration: 100ms;
     position: relative;
     left: 0;
-    height: 50%;
+    height: calc(50% - 1px);
     overflow: hidden;
   }
 
   & .flapTop {
-    background-color: pink;
-    top: 0;
+    top: 0px;
 
     &.animated {
       animation-name: upperFlap;
@@ -50,8 +49,7 @@
   }
 
   & .flapBottom {
-    background-color: powderblue;
-    bottom: 0;
+    bottom: -2px;
 
     &.animated {
       animation-name: lowerFlap;
