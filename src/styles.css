@@ -1,8 +1,6 @@
-/* add css styles here (optional) */
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
 
-.test {
-  display: inline-block;
-  margin: 2em auto;
-  border: 2px solid #000;
-  font-size: 2em;
+.digit {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 128pt;
 }
