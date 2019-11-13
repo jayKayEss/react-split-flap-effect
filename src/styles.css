@@ -1,6 +1,67 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
 
+@keyframes upperFlap {
+  from {
+    transform: rotateX(0deg)
+  }
+
+  to {
+    transform: rotateX(90deg)
+  }
+}
+
+@keyframes lowerFlap {
+  from {
+    transform: rotateX(90deg)
+  }
+
+  to {
+    transform: rotateX(0deg)
+  }
+}
+
 .digit {
+  position: relative;
   font-family: 'Roboto Condensed', sans-serif;
-  font-size: 128pt;
+  border: 1px solid gray;
+  width: 64px;
+  height: 100px;
+  line-height: 100px;
+  font-size: 100px;
+  text-align: center;
+
+  & .flapTop,
+  & .flapBottom {
+    animation-duration: 100ms;
+    position: relative;
+    left: 0;
+    height: 50%;
+    overflow: hidden;
+  }
+
+  & .flapTop {
+    background-color: pink;
+    top: 0;
+
+    &.animated {
+      animation-name: upperFlap;
+      transform-origin: bottom;
+    }
+  }
+
+  & .flapBottom {
+    background-color: powderblue;
+    bottom: 0;
+
+    &.animated {
+      animation-name: lowerFlap;
+      transform-origin: top;
+    }
+
+    & div {
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+    }
+  }
 }
