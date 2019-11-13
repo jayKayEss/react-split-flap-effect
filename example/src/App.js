@@ -27,7 +27,7 @@ const App = () => {
 
   return (
     <div style={styles}>
-      <FlapDigit value={value.toString()}/>
+      <FlapDigit value={value.toString()} />
     </div>
   )
 }
