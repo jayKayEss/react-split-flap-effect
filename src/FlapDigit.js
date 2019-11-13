@@ -1,34 +1,42 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Flap from './Flap'
+import styled from '@emotion/styled'
 
-import styles from './styles.css'
-console.log('STYLEZZZ', styles)
+const InnerDigit = styled.div(
+  {
+    position: 'relative',
+    textAlign: 'center'
+  },
+  props => ({
+    width: props.width,
+    height: props.height,
+    lineHeight: props.height,
+    fontSize: props.height
+  })
+)
 
-const FlapDigit = ({ value }) => {
+const FlapDigit = ({ value, width, height }) => {
   return (
-    <div className={styles.digit}>
-      <div className={`${styles.flap} ${styles.top}`}>
-        9
-      </div>
-      <div className={`${styles.flap} ${styles.bottom}`}>
-        <div>9</div>
-      </div>
-      <div key={`upper-${value}`} className={`${styles.flap} ${styles.top} ${styles.animated}`}>
-        <div>{value}</div>
-      </div>
-      <div key={`lower-${value}`} className={`${styles.flap} ${styles.bottom} ${styles.animated}`}>
-        <div>{value}</div>
-      </div>
-    </div>
+    <InnerDigit width={width} height={height}>
+      <Flap>9</Flap>
+      <Flap bottom>9</Flap>
+      <Flap key={`top-${value}`} animated>{value}</Flap>
+      <Flap key={`bottom-${value}`} bottom animated>{value}</Flap>
+    </InnerDigit>
   )
 }
 
 FlapDigit.defaultProps = {
-  value: ''
+  value: '',
+  width: '64px',
+  height: '100px'
 }
 
 FlapDigit.propTypes = {
-  value: PropTypes.string
+  value: PropTypes.string,
+  width: PropTypes.string,
+  height: PropTypes.string
 }
 
 export default FlapDigit
