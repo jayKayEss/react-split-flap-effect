@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Flap from './Flap'
 import styled from '@emotion/styled'
+
+function usePrevious (value) {
+  const ref = useRef()
+
+  useEffect(() => {
+    console.log('VALUE IS CHANGING', ref.current, value)
+    ref.current = value
+  }, [value])
+
+  console.log('RETURNING PREV VALUE', ref.current, value)
+  return ref.current
+}
 
 const InnerDigit = styled.div(
   {
@@ -16,13 +28,29 @@ const InnerDigit = styled.div(
   })
 )
 
-const FlapDigit = ({ value, width, height }) => {
+const FlapDigit = ({ value, width, height, timing, ...restProps }) => {
+  const [phase2, setPhase2] = useState(false)
+  const [prevValue, setPrevValue] = useState('')
+
+  useEffect(() => {
+    setPhase2(false)
+
+    const timer = setTimeout(() => {
+      setPhase2(true)
+    }, timing)
+
+    return () => {
+      setPrevValue(value)
+      clearTimeout(timer)
+    }
+  }, [value])
+
   return (
     <InnerDigit width={width} height={height}>
-      <Flap>9</Flap>
-      <Flap bottom>9</Flap>
-      <Flap key={`top-${value}`} animated>{value}</Flap>
-      <Flap key={`bottom-${value}`} bottom animated>{value}</Flap>
+      <Flap>{value}</Flap>
+      <Flap bottom>{prevValue}</Flap>
+      <Flap key={`top-${prevValue}`} animated {...restProps}>{prevValue}</Flap>
+      {phase2 && <Flap key={`bottom-${value}`} bottom animated {...restProps}>{value}</Flap>}
     </InnerDigit>
   )
 }
@@ -30,13 +58,15 @@ const FlapDigit = ({ value, width, height }) => {
 FlapDigit.defaultProps = {
   value: '',
   width: '64px',
-  height: '100px'
+  height: '100px',
+  timing: 80
 }
 
 FlapDigit.propTypes = {
   value: PropTypes.string,
   width: PropTypes.string,
-  height: PropTypes.string
+  height: PropTypes.string,
+  timing: PropTypes.number
 }
 
 export default FlapDigit
