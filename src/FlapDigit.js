@@ -1,19 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Flap from './Flap'
 import styled from '@emotion/styled'
-
-function usePrevious (value) {
-  const ref = useRef()
-
-  useEffect(() => {
-    console.log('VALUE IS CHANGING', ref.current, value)
-    ref.current = value
-  }, [value])
-
-  console.log('RETURNING PREV VALUE', ref.current, value)
-  return ref.current
-}
 
 const InnerDigit = styled.div(
   {
