@@ -1,24 +1,19 @@
-import React, { useState, useEffect, useRef } from 'react'
-import FlapDisplay, { FlapDigit } from 'react-flapper'
+import React, { useState, useEffect } from 'react'
+import FlapDisplay from 'react-flapper'
 
 const styles = {
   margin: '25px'
 }
 
 const App = () => {
-  const [value, setValue] = useState(0)
-  const valueRef = useRef(value)
-  valueRef.current = value
+  const [value, setValue] = useState('000000')
 
   useEffect(() => {
     const timer = setInterval(() => {
-      const value = valueRef.current
-      if (value < 9) {
-        setValue(value + 1)
-      } else {
-        setValue(0)
-      }
-    }, 1000)
+      const min = 100000
+      const max = 999999
+      setValue(Math.floor(Math.random() * (max - min + 1) + min))
+    }, 3000)
 
     return () => {
       clearTimeout(timer)
@@ -27,7 +22,7 @@ const App = () => {
 
   return (
     <div style={styles}>
-      <FlapDigit value={value.toString()} />
+      <FlapDisplay value={value.toString()} />
     </div>
   )
 }

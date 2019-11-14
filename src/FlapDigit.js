@@ -6,6 +6,7 @@ import styled from '@emotion/styled'
 const InnerDigit = styled.div(
   {
     position: 'relative',
+    display: 'inline-block',
     textAlign: 'center'
   },
   props => ({

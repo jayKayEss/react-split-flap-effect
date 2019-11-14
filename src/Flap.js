@@ -69,7 +69,7 @@ const Flap = ({ children, ...restProps }) => (
 Flap.defaultProps = {
   bottom: false,
   animated: false,
-  backgroundColor: '#fff',
+  backgroundColor: '#eee',
   animationDuration: '100ms'
 }
 
