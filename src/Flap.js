@@ -18,7 +18,11 @@ const flapDownBottom = keyframes`
     transform: rotateX(90deg)
   }
 
-  to {
+  80% {
+    transform: rotateX(20deg)
+  }
+
+  60%, to {
     transform: rotateX(0deg)
   }
 `
@@ -39,6 +43,7 @@ const Outer = styled.div(
     animationName: props.animated ? (
       props.bottom ? flapDownBottom : flapDownTop
     ) : null,
+    animationTimingFunction: props.bottom ? 'ease-out' : 'ease-in',
     transformOrigin: props.bottom ? 'top' : 'bottom'
   })
 )

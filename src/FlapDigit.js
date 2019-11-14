@@ -32,6 +32,9 @@ const FlapDigit = ({ value, width, height, timing, ...restProps }) => {
   const [phase2, setPhase2] = useState(false)
   const [prevValue, setPrevValue] = useState('')
 
+  const durationTop = `${timing}ms`
+  const durationBottom = `${parseInt(timing * 0.8)}ms`
+
   useEffect(() => {
     setPhase2(false)
 
@@ -49,8 +52,8 @@ const FlapDigit = ({ value, width, height, timing, ...restProps }) => {
     <InnerDigit width={width} height={height}>
       <Flap>{value}</Flap>
       <Flap bottom>{prevValue}</Flap>
-      <Flap key={`top-${prevValue}`} animated {...restProps}>{prevValue}</Flap>
-      {phase2 && <Flap key={`bottom-${value}`} bottom animated {...restProps}>{value}</Flap>}
+      <Flap key={`top-${prevValue}`} animated animationDuration={durationTop} {...restProps}>{prevValue}</Flap>
+      {phase2 && <Flap key={`bottom-${value}`} bottom animated animationDuration={durationBottom} {...restProps}>{value}</Flap>}
     </InnerDigit>
   )
 }
@@ -59,7 +62,7 @@ FlapDigit.defaultProps = {
   value: '',
   width: '64px',
   height: '100px',
-  timing: 80
+  timing: 150
 }
 
 FlapDigit.propTypes = {
