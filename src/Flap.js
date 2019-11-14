@@ -30,7 +30,7 @@ const flapDownBottom = keyframes`
 const Outer = styled.div(
   {
     position: 'absolute',
-    height: '50%',
+    height: 'calc(50% - 1px)',
     width: '100%',
     overflow: 'hidden',
     textAlign: 'center',
@@ -54,7 +54,7 @@ const Inner = styled.div(
     position: 'absolute'
   },
   props => ({
-    top: props.bottom ? '-100%' : '0'
+    top: props.bottom ? 'calc(-100% - 1px)' : '0'
   })
 )
 
