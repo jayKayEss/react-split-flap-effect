@@ -44,7 +44,8 @@ const Outer = styled.div(
       props.bottom ? flapDownBottom : flapDownTop
     ) : null,
     animationTimingFunction: props.bottom ? 'ease-out' : 'ease-in',
-    transformOrigin: props.bottom ? 'top' : 'bottom'
+    transformOrigin: props.bottom ? 'top' : 'bottom',
+    zIndex: props.animated ? '1' : '-1'
   })
 )
 
