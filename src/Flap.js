@@ -15,7 +15,7 @@ const flapDownTop = keyframes`
 
 const flapDownBottom = keyframes`
   from, 50% {
-    transform: rotateX(-90deg)
+    transform: rotateX(90deg)
   }
 
   80% {

@@ -5,21 +5,26 @@ const styles = {
   margin: '25px'
 }
 
+const randomNum = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
+
 const App = () => {
-  const [value, setValue] = useState('000000')
+  const min = 100000
+  const max = 999999
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const min = 100000
-      const max = 999999
-      setValue(Math.floor(Math.random() * (max - min + 1) + min))
-    }, 3000)
+  // const [value, setValue] = useState(randomNum(min, max))
+  const [value, setValue] = useState('0')
 
-    return () => {
-      clearTimeout(timer)
-    }
-  }, [])
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     setValue(randomNum(min, max))
+  //   }, 3000)
 
+  //   return () => {
+  //     clearTimeout(timer)
+  //   }
+  // }, [])
+
+  console.log('RENDER', value)
   return (
     <div style={styles}>
       <FlapDisplay value={value.toString()} />

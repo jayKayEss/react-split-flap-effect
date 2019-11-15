@@ -17,15 +17,8 @@ const InnerDigit = styled.div(
   })
 )
 
-const FlapDigit = ({ value, width, height, timing, ...restProps }) => {
-  const [prevValue, setPrevValue] = useState('')
-
-  useEffect(() => {
-    return () => {
-      setPrevValue(value)
-    }
-  }, [value])
-
+const FlapDigit = ({ value, prevValue, width, height, timing, ...restProps }) => {
+  console.log('RENDER DIGIT', value, prevValue)
   return (
     <InnerDigit width={width} height={height}>
       <Flap>{value}</Flap>
@@ -38,6 +31,7 @@ const FlapDigit = ({ value, width, height, timing, ...restProps }) => {
 
 FlapDigit.defaultProps = {
   value: '',
+  prevValue: '',
   width: '64px',
   height: '100px',
   timing: 150
@@ -45,6 +39,7 @@ FlapDigit.defaultProps = {
 
 FlapDigit.propTypes = {
   value: PropTypes.string,
+  prevValue: PropTypes.string,
   width: PropTypes.string,
   height: PropTypes.string,
   timing: PropTypes.number

@@ -4,20 +4,26 @@ import FlapDigit from './FlapDigit'
 
 const FlapStack = ({ preset, value }) => {
   const [stack, setStack] = useState([])
-  const [cursor, setCursor] = useState(0)
+  const [cursor, setCursor] = useState(1)
 
-  // const stackRef = useRef(stack)
+  const stackRef = useRef(stack)
+  stackRef.current = stack
+
   const cursorRef = useRef(cursor)
   cursorRef.current = cursor
 
   useEffect(() => {
+    console.log('EFFECT [stack]')
     setStack(preset.split(''))
     setCursor(0)
   }, [preset])
 
   useEffect(() => {
+    console.log('EFFECT STACK')
     const timer = setInterval(() => {
       const cursor = cursorRef.current
+      const stack = stackRef.current
+      console.log('TIMER TICK', cursor, value, stackRef)
 
       if (stack[cursor] === value) {
         clearInterval(timer)
@@ -29,9 +35,11 @@ const FlapStack = ({ preset, value }) => {
     }, 210)
 
     return () => clearInterval(timer)
-  }, [value])
+  }, [preset, value])
 
-  return <FlapDigit value={stack[cursor]} />
+  const prevCursor = cursor > 0 ? cursor - 1 : stack.length - 1
+  console.log('RENDER STACK', cursor, prevCursor, stack)
+  return <FlapDigit value={stack[cursor]} prevValue={stack[prevCursor]} />
 }
 
 FlapStack.defaultProps = {

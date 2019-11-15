@@ -15,6 +15,7 @@ const FlapDisplay = ({ value }) => {
     setDigits(newDigits)
   }, [value])
 
+  console.log('RENDER DISPLAY', value, digits)
   return (
     <div>
       {digits.map((digit, i) => (
