@@ -8,14 +8,14 @@ const flapDownTop = keyframes`
     transform: rotateX(0deg)
   }
 
-  to {
+  50%, to {
     transform: rotateX(90deg)
   }
 `
 
 const flapDownBottom = keyframes`
-  from {
-    transform: rotateX(90deg)
+  from, 50% {
+    transform: rotateX(-90deg)
   }
 
   80% {
@@ -70,7 +70,7 @@ Flap.defaultProps = {
   bottom: false,
   animated: false,
   backgroundColor: '#eee',
-  animationDuration: '100ms'
+  animationDuration: '200ms'
 }
 
 Flap.propTypes = {
