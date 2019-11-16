@@ -11,20 +11,19 @@ const App = () => {
   const min = 100000
   const max = 999999
 
-  // const [value, setValue] = useState(randomNum(min, max))
-  const [value, setValue] = useState('0')
+  const [value, setValue] = useState(randomNum(min, max))
+  // const [value, setValue] = useState('000000')
 
-  // useEffect(() => {
-  //   const timer = setInterval(() => {
-  //     setValue(randomNum(min, max))
-  //   }, 3000)
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setValue(randomNum(min, max))
+    }, 3000)
 
-  //   return () => {
-  //     clearTimeout(timer)
-  //   }
-  // }, [])
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [])
 
-  console.log('RENDER', value)
   return (
     <div style={styles}>
       <FlapDisplay value={value.toString()} />

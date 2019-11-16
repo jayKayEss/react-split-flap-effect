@@ -18,7 +18,6 @@ const InnerDigit = styled.div(
 )
 
 const FlapDigit = ({ value, prevValue, width, height, timing, ...restProps }) => {
-  console.log('RENDER DIGIT', value, prevValue)
   return (
     <InnerDigit width={width} height={height}>
       <Flap>{value}</Flap>

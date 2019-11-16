@@ -7,7 +7,7 @@ export const Presets = {
   ALPHANUM: '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 }
 
-const FlapDisplay = ({ value }) => {
+const FlapDisplay = ({ value, chars }) => {
   const [digits, setDigits] = useState([])
 
   useEffect(() => {
@@ -15,18 +15,17 @@ const FlapDisplay = ({ value }) => {
     setDigits(newDigits)
   }, [value])
 
-  console.log('RENDER DISPLAY', value, digits)
   return (
     <div>
       {digits.map((digit, i) => (
-        <FlapStack key={i} preset={Presets.NUM} value={digit} />
+        <FlapStack key={i} preset={chars} value={digit} />
       ))}
     </div>
   )
 }
 
 FlapDisplay.defaultProps = {
-  chars: Presets.ALPHANUM
+  chars: Presets.NUM
 }
 
 FlapDisplay.propTypes = {
