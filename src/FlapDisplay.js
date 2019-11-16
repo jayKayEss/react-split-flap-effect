@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import FlapStack from './FlapStack'
 
 export const Presets = {
-  NUM: '0123456789',
-  ALPHANUM: '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  NUM: ' 0123456789',
+  ALPHANUM: ' 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 }
 
 const FlapDisplay = ({ value, chars }) => {

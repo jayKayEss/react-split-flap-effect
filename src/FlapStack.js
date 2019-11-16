@@ -33,7 +33,7 @@ const FlapStack = ({ preset, value }) => {
       } else {
         setCursor([cursor + 1, cursor])
       }
-    }, 210)
+    }, 160)
 
     return () => clearInterval(timer)
   }, [preset, value])

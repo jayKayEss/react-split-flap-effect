@@ -71,7 +71,7 @@ Flap.defaultProps = {
   bottom: false,
   animated: false,
   backgroundColor: '#eee',
-  animationDuration: '200ms'
+  animationDuration: '150ms'
 }
 
 Flap.propTypes = {
