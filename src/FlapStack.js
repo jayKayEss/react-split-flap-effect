@@ -6,8 +6,7 @@ import { FlapDigit } from './FlapDigit'
 // (-1 to render a blank character)
 const InitialCursor = [0, -1]
 
-export const FlapStack = ({ preset, value }) => {
-  const [stack, setStack] = useState([])
+export const FlapStack = ({ stack, value, timing, ...restProps }) => {
   const [cursor, setCursor] = useState(InitialCursor)
 
   const stackRef = useRef(stack)
@@ -17,9 +16,8 @@ export const FlapStack = ({ preset, value }) => {
   cursorRef.current = cursor
 
   useEffect(() => {
-    setStack(preset.split(''))
     setCursor(InitialCursor)
-  }, [preset])
+  }, [stack])
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -33,13 +31,19 @@ export const FlapStack = ({ preset, value }) => {
       } else {
         setCursor([cursor + 1, cursor])
       }
-    }, 160)
+    }, timing)
 
     return () => clearInterval(timer)
-  }, [preset, value])
+  }, [stack, value])
 
   const [currCursor, prevCursor] = cursor
-  return <FlapDigit value={stack[currCursor]} prevValue={stack[prevCursor]} />
+  return (
+    <FlapDigit
+      value={stack[currCursor]}
+      prevValue={stack[prevCursor]}
+      {...restProps}
+    />
+  )
 }
 
 FlapStack.defaultProps = {
@@ -47,6 +51,7 @@ FlapStack.defaultProps = {
 }
 
 FlapStack.propTypes = {
-  preset: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired
+  stack: PropTypes.arrayOf(PropTypes.string).isRequired,
+  value: PropTypes.string.isRequired,
+  timing: PropTypes.number
 }

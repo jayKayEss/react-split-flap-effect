@@ -17,11 +17,11 @@ const InnerDigit = styled.div(
   })
 )
 
-export const FlapDigit = ({ value, prevValue, width, height, timing, ...restProps }) => {
+export const FlapDigit = ({ value, prevValue, width, height, ...restProps }) => {
   return (
-    <InnerDigit width={width} height={height}>
-      <Flap>{value}</Flap>
-      <Flap bottom>{prevValue}</Flap>
+    <InnerDigit width={width} height={height} {...restProps}>
+      <Flap {...restProps}>{value}</Flap>
+      <Flap bottom {...restProps}>{prevValue}</Flap>
       <Flap key={`top-${prevValue}`} animated {...restProps}>{prevValue}</Flap>
       <Flap key={`bottom-${value}`} bottom animated {...restProps}>{value}</Flap>
     </InnerDigit>
@@ -30,16 +30,13 @@ export const FlapDigit = ({ value, prevValue, width, height, timing, ...restProp
 
 FlapDigit.defaultProps = {
   value: '',
-  prevValue: '',
-  width: '64px',
-  height: '100px',
-  timing: 150
+  prevValue: ''
 }
 
 FlapDigit.propTypes = {
   value: PropTypes.string,
   prevValue: PropTypes.string,
-  width: PropTypes.string,
-  height: PropTypes.string,
-  timing: PropTypes.number
+  width: PropTypes.string.isRequired,
+  height: PropTypes.string.isRequired,
+  animationTiming: PropTypes.number.isRequired
 }

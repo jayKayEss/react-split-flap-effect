@@ -38,7 +38,7 @@ const Outer = styled.div(
   },
   props => ({
     backgroundColor: props.backgroundColor,
-    animationDuration: props.animationDuration,
+    animationDuration: `${props.animationTiming}ms`,
     top: props.bottom ? '50%' : '0',
     animationName: props.animated ? (
       props.bottom ? flapDownBottom : flapDownTop
@@ -69,14 +69,12 @@ export const Flap = ({ children, ...restProps }) => (
 
 Flap.defaultProps = {
   bottom: false,
-  animated: false,
-  backgroundColor: '#eee',
-  animationDuration: '150ms'
+  animated: false
 }
 
 Flap.propTypes = {
   bottom: PropTypes.bool,
   animated: PropTypes.bool,
   backgroundColor: PropTypes.string,
-  animationDuration: PropTypes.string
+  animationTiming: PropTypes.number
 }
