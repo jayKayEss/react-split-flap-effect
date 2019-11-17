@@ -59,7 +59,7 @@ const Inner = styled.div(
   })
 )
 
-const Flap = ({ children, ...restProps }) => (
+export const Flap = ({ children, ...restProps }) => (
   <Outer {...restProps}>
     <Inner {...restProps}>
       {children}
@@ -80,5 +80,3 @@ Flap.propTypes = {
   backgroundColor: PropTypes.string,
   animationDuration: PropTypes.string
 }
-
-export default Flap

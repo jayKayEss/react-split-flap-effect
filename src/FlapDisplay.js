@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import FlapStack from './FlapStack'
+import React, { useEffect, useState } from 'react'
+import { FlapStack } from './FlapStack'
 
 export const Presets = {
   NUM: ' 0123456789',
   ALPHANUM: ' 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 }
 
-const FlapDisplay = ({ value, chars }) => {
+export const FlapDisplay = ({ value, chars }) => {
   const [digits, setDigits] = useState([])
 
   useEffect(() => {
@@ -31,5 +31,3 @@ FlapDisplay.defaultProps = {
 FlapDisplay.propTypes = {
   value: PropTypes.string.isRequired
 }
-
-export default FlapDisplay

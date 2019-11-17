@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react'
-import FlapDisplay from 'react-flapper'
+import React, { useEffect, useState } from 'react'
+import { FlapDisplay } from 'react-flapper'
 
 const styles = {
   margin: '25px'

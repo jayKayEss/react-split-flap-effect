@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
-import Flap from './Flap'
 import styled from '@emotion/styled'
+import PropTypes from 'prop-types'
+import React from 'react'
+import { Flap } from './Flap'
 
 const InnerDigit = styled.div(
   {
@@ -17,7 +17,7 @@ const InnerDigit = styled.div(
   })
 )
 
-const FlapDigit = ({ value, prevValue, width, height, timing, ...restProps }) => {
+export const FlapDigit = ({ value, prevValue, width, height, timing, ...restProps }) => {
   return (
     <InnerDigit width={width} height={height}>
       <Flap>{value}</Flap>
@@ -43,5 +43,3 @@ FlapDigit.propTypes = {
   height: PropTypes.string,
   timing: PropTypes.number
 }
-
-export default FlapDigit

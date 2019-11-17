@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
-import FlapDigit from './FlapDigit'
+import React, { useEffect, useRef, useState } from 'react'
+import { FlapDigit } from './FlapDigit'
 
 // Current index, previous index
 // (-1 to render a blank character)
 const InitialCursor = [0, -1]
 
-const FlapStack = ({ preset, value }) => {
+export const FlapStack = ({ preset, value }) => {
   const [stack, setStack] = useState([])
   const [cursor, setCursor] = useState(InitialCursor)
 
@@ -50,5 +50,3 @@ FlapStack.propTypes = {
   preset: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired
 }
-
-export default FlapStack
