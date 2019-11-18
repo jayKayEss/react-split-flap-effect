@@ -8,6 +8,7 @@ const splitChars = v => v.split('').map(c => c.toUpperCase())
 export const FlapDisplay = ({
   value,
   chars,
+  words,
   timing,
   animationTiming,
   ...restProps
@@ -16,11 +17,15 @@ export const FlapDisplay = ({
   const [digits, setDigits] = useState([])
 
   useEffect(() => {
-    setStack(splitChars(chars))
-  }, [chars])
+    if (words) {
+      setStack(words)
+    } else {
+      setStack(splitChars(chars))
+    }
+  }, [chars, words])
 
   useEffect(() => {
-    setDigits(splitChars(value))
+    setDigits(words ? [value] : splitChars(value))
   }, [value])
 
   return (
@@ -51,6 +56,7 @@ FlapDisplay.defaultProps = {
 FlapDisplay.propTypes = {
   value: PropTypes.string.isRequired,
   chars: PropTypes.string,
+  words: PropTypes.arrayOf(PropTypes.string),
   timing: PropTypes.number,
   animationTiming: PropTypes.number,
   width: PropTypes.number,

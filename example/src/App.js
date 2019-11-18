@@ -34,11 +34,51 @@ const Rando = (props) => {
   )
 }
 
+const words = [
+  '',
+  'Washington',
+  'Baltimore',
+  'Philadelphia',
+  'Newark',
+  'New York',
+  'New Haven',
+  'Providence',
+  'Boston'
+]
+
+const randWord = () => words[Math.floor(Math.random() * (words.length - 1)) + 1]
+
+const RandWords = (props) => {
+  const [value, setValue] = useState(randWord())
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setValue(randWord())
+    }, 3000)
+
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [])
+
+  return (
+    <div style={styles}>
+      <FlapDisplay
+        value={value}
+        words={words}
+        {...props}
+      />
+    </div>
+  )
+}
+
 const App = () => (
   <React.Fragment>
-    <Rando timing={500} />
-    <Rando timing={300} />
+    {/* <Rando timing={500} /> */}
+    {/* <Rando timing={300} /> */}
+    {/* <Rando timing={150} animationTiming={500} /> */}
     <Rando />
+    <RandWords width={600} />
   </React.Fragment>
 )
 
