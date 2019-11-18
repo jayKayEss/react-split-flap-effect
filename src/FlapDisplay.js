@@ -42,8 +42,8 @@ export const FlapDisplay = ({
 FlapDisplay.defaultProps = {
   chars: Presets.NUM,
   timing: 150,
-  width: '64px',
-  height: '100px',
+  width: 64,
+  height: 100,
   color: 'black',
   backgroundColor: 'white'
 }
@@ -53,8 +53,8 @@ FlapDisplay.propTypes = {
   chars: PropTypes.string,
   timing: PropTypes.number,
   animationTiming: PropTypes.number,
-  width: PropTypes.string,
-  height: PropTypes.string,
+  width: PropTypes.number,
+  height: PropTypes.number,
   color: PropTypes.string,
   backgroundColor: PropTypes.string
 }

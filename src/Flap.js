@@ -1,4 +1,3 @@
-import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { keyframes } from '@emotion/core'
@@ -27,44 +26,31 @@ const flapDownBottom = keyframes`
   }
 `
 
-const Outer = styled.div(
+export const Flap = styled.div(
   {
     position: 'absolute',
-    height: 'calc(50% - 1px)',
+    height: '100%',
     width: '100%',
-    overflow: 'hidden',
     textAlign: 'center',
-    animationFillMode: 'forwards'
+    animationFillMode: 'forwards',
+    transformOrigin: 'center'
   },
-  props => ({
-    backgroundColor: props.backgroundColor,
-    animationDuration: `${props.animationTiming}ms`,
-    top: props.bottom ? '50%' : '0',
-    animationName: props.animated ? (
-      props.bottom ? flapDownBottom : flapDownTop
-    ) : null,
-    animationTimingFunction: props.bottom ? 'ease-out' : 'ease-in',
-    transformOrigin: props.bottom ? 'top' : 'bottom',
-    zIndex: props.animated ? '1' : '-1'
-  })
-)
-
-const Inner = styled.div(
-  {
-    width: '100%',
-    position: 'absolute'
-  },
-  props => ({
-    top: props.bottom ? 'calc(-100% - 1px)' : '0'
-  })
-)
-
-export const Flap = ({ children, ...restProps }) => (
-  <Outer {...restProps}>
-    <Inner {...restProps}>
-      {children}
-    </Inner>
-  </Outer>
+  props => {
+    const halfHeight = parseInt(props.height / 2) - 1
+    const flapOffset = props.bottom ? props.height - halfHeight : halfHeight
+    return {
+      backgroundColor: props.backgroundColor,
+      animationDuration: `${props.animationTiming}ms`,
+      clip: props.bottom
+        ? `rect(${flapOffset}px, ${props.width}px, ${props.height}px, 0)`
+        : `rect(0, ${props.width}px, ${flapOffset}px, 0);`,
+      animationName: props.animated ? (
+        props.bottom ? flapDownBottom : flapDownTop
+      ) : null,
+      animationTimingFunction: props.bottom ? 'ease-out' : 'ease-in',
+      zIndex: props.animated ? '1' : '-1'
+    }
+  }
 )
 
 Flap.defaultProps = {
