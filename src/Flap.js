@@ -36,7 +36,7 @@ export const Flap = styled.div(
     transformOrigin: 'center'
   },
   props => {
-    const halfHeight = parseInt(props.height / 2) - 1
+    const halfHeight = parseInt(props.height / 2)
     const flapOffset = props.bottom ? props.height - halfHeight : halfHeight
     return {
       backgroundColor: props.backgroundColor,

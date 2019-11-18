@@ -17,6 +17,19 @@ const InnerDigit = styled.div(
   })
 )
 
+const Bar = styled.div(
+  {
+    height: '2px',
+    width: '100%',
+    position: 'absolute',
+    top: 'calc(50% - 1px)',
+    zIndex: 3
+  },
+  props => ({
+    backgroundColor: props.backgroundColor
+  })
+)
+
 export const FlapDigit = ({ value, prevValue, ...restProps }) => {
   return (
     <InnerDigit {...restProps}>
@@ -24,6 +37,7 @@ export const FlapDigit = ({ value, prevValue, ...restProps }) => {
       <Flap bottom {...restProps}>{prevValue}</Flap>
       <Flap key={`top-${prevValue}`} animated {...restProps}>{prevValue}</Flap>
       <Flap key={`bottom-${value}`} bottom animated {...restProps}>{value}</Flap>
+      <Bar {...restProps} />
     </InnerDigit>
   )
 }
