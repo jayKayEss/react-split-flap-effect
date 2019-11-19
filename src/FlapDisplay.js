@@ -3,12 +3,19 @@ import React, { useEffect, useState } from 'react'
 import { FlapStack } from './FlapStack'
 import { Presets } from './Presets'
 
-const splitChars = v => v.split('').map(c => c.toUpperCase())
+const splitChars = v => String(v).split('').map(c => c.toUpperCase())
+
+const padValue = (v, length, padding, padStart) => padStart
+  ? String(v).padStart(length, padding)
+  : String(v).padEnd(length, padding)
 
 export const FlapDisplay = ({
   value,
   chars,
   words,
+  length,
+  padding,
+  padStart,
   render,
   ...restProps
 }) => {
@@ -23,7 +30,7 @@ export const FlapDisplay = ({
       lineHeight: restProps.height + 'px',
       ...restProps
     })
-  }, [...restProps])
+  }, Object.values(restProps))
 
   useEffect(() => {
     if (words) {
@@ -34,7 +41,12 @@ export const FlapDisplay = ({
   }, [chars, words])
 
   useEffect(() => {
-    setDigits(words ? [value] : splitChars(value))
+    if (words) {
+      setDigits([value])
+    } else {
+      const usePadStart = padStart || !!value.match(/^[0-9]*$/)
+      setDigits(splitChars(padValue(value, length, padding, usePadStart)))
+    }
   }, [value])
 
   const children = digits.map((digit, i) => (
@@ -55,6 +67,8 @@ export const FlapDisplay = ({
 
 FlapDisplay.defaultProps = {
   chars: Presets.NUM,
+  length: 6,
+  padding: ' ',
   timing: 150,
   width: 64,
   height: 100,
@@ -71,6 +85,9 @@ FlapDisplay.propTypes = {
   value: PropTypes.string.isRequired,
   chars: PropTypes.string,
   words: PropTypes.arrayOf(PropTypes.string),
+  length: PropTypes.number,
+  padding: PropTypes.string,
+  padStart: PropTypes.bool,
   timing: PropTypes.number,
   animationDuration: PropTypes.string,
   width: PropTypes.number,
