@@ -31,7 +31,6 @@ export const Flap = styled.div(
     position: 'absolute',
     height: '100%',
     width: '100%',
-    textAlign: 'center',
     animationFillMode: 'forwards',
     transformOrigin: 'center'
   },
@@ -39,16 +38,18 @@ export const Flap = styled.div(
     const halfHeight = parseInt(props.height / 2)
     const flapOffset = props.bottom ? props.height - halfHeight : halfHeight
     return {
-      backgroundColor: props.backgroundColor,
-      animationDuration: `${props.animationTiming}ms`,
+      color: props.color,
+      background: props.background,
+      borderRadius: props.borderRadius,
+      animationDuration: props.animationDuration,
       clip: props.bottom
         ? `rect(${flapOffset}px, ${props.width}px, ${props.height}px, 0)`
         : `rect(0, ${props.width}px, ${flapOffset}px, 0);`,
       animationName: props.animated ? (
         props.bottom ? flapDownBottom : flapDownTop
       ) : null,
-      animationTimingFunction: props.bottom ? 'ease-out' : 'ease-in',
-      zIndex: props.animated ? '1' : '-1'
+      animationDurationFunction: props.bottom ? 'ease-out' : 'ease-in',
+      zIndex: props.animated ? '2' : '1'
     }
   }
 )
@@ -61,6 +62,8 @@ Flap.defaultProps = {
 Flap.propTypes = {
   bottom: PropTypes.bool,
   animated: PropTypes.bool,
-  backgroundColor: PropTypes.string,
-  animationTiming: PropTypes.number
+  background: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+  animationDuration: PropTypes.string.isRequired,
+  borderRadius: PropTypes.string.isRequired
 }

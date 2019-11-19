@@ -62,12 +62,8 @@ export const FlapStack = ({ stack, value, timing, ...restProps }) => {
   )
 }
 
-FlapStack.defaultProps = {
-
-}
-
 FlapStack.propTypes = {
   stack: PropTypes.arrayOf(PropTypes.string).isRequired,
   value: PropTypes.string.isRequired,
-  timing: PropTypes.number
+  timing: PropTypes.number.isRequired
 }

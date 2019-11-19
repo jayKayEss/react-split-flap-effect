@@ -7,26 +7,32 @@ const InnerDigit = styled.div(
   {
     position: 'relative',
     display: 'inline-block',
-    textAlign: 'center'
+    boxSizing: 'border-box'
   },
   props => ({
     width: props.width + 'px',
     height: props.height + 'px',
-    lineHeight: props.height + 'px',
-    fontSize: props.height + 'px'
+    fontSize: props.fontSize,
+    lineHeight: props.lineHeight,
+    textAlign: props.textAlign,
+    background: props.background,
+    margin: props.margin,
+    border: props.border,
+    borderRadius: props.borderRadius
   })
 )
 
 const Bar = styled.div(
   {
-    height: '2px',
     width: '100%',
     position: 'absolute',
-    top: 'calc(50% - 1px)',
-    zIndex: 3
+    zIndex: 3,
+    boxSizing: 'border-box'
   },
   props => ({
-    backgroundColor: props.backgroundColor
+    height: props.hingeWidth + 'px',
+    top: `calc(50% - ${props.hingeWidth}px / 2)`,
+    background: props.background
   })
 )
 
@@ -52,5 +58,12 @@ FlapDigit.propTypes = {
   prevValue: PropTypes.string,
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
-  animationTiming: PropTypes.number.isRequired
+  fontSize: PropTypes.string.isRequired,
+  lineHeight: PropTypes.string.isRequired,
+  textAlign: PropTypes.string.isRequired,
+  background: PropTypes.string.isRequired,
+  margin: PropTypes.string.isRequired,
+  border: PropTypes.string.isRequired,
+  borderRadius: PropTypes.string.isRequired,
+  hingeWidth: PropTypes.number.isRequired
 }

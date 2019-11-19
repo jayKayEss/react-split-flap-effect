@@ -76,9 +76,9 @@ const App = () => (
   <React.Fragment>
     {/* <Rando timing={500} /> */}
     {/* <Rando timing={300} /> */}
-    {/* <Rando timing={150} animationTiming={500} /> */}
+    {/* <Rando timing={150} animationDuration={500} /> */}
     <Rando />
-    <RandWords width={600} />
+    {/* <RandWords width={600} /> */}
   </React.Fragment>
 )
 
