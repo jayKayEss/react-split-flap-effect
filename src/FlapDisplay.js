@@ -9,6 +9,7 @@ export const FlapDisplay = ({
   value,
   chars,
   words,
+  render,
   ...restProps
 }) => {
   const [derivedProps, setDerivedProps] = useState({})
@@ -36,16 +37,18 @@ export const FlapDisplay = ({
     setDigits(words ? [value] : splitChars(value))
   }, [value])
 
+  const children = digits.map((digit, i) => (
+    <FlapStack
+      key={i}
+      stack={stack}
+      value={digit}
+      {...derivedProps}
+    />
+  ))
+
   return (
     <div>
-      {digits.map((digit, i) => (
-        <FlapStack
-          key={i}
-          stack={stack}
-          value={digit}
-          {...derivedProps}
-        />
-      ))}
+      {render ? render({ ...derivedProps, children }) : children}
     </div>
   )
 }

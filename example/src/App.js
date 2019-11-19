@@ -72,13 +72,36 @@ const RandWords = (props) => {
   )
 }
 
+const InnerDisplay = ({ children, fontSize, lineHeight, background }) => {
+  const placeholderStyle = {
+    color: background,
+    fontSize,
+    lineHeight,
+    display: 'inline-block',
+    verticalAlign: 'top'
+  }
+
+  return (
+    <React.Fragment>
+      <div style={placeholderStyle}>$</div>
+      {children[0]}
+      {children[1]}
+      {children[2]}
+      <div style={placeholderStyle}>.</div>
+      {children[4]}
+      {children[5]}
+      {children[6]}
+    </React.Fragment>
+  )
+}
+
 const App = () => (
   <React.Fragment>
     {/* <Rando timing={500} /> */}
     {/* <Rando timing={300} /> */}
     {/* <Rando timing={150} animationDuration={500} /> */}
-    <Rando />
-    {/* <RandWords width={600} /> */}
+    <Rando render={InnerDisplay} />
+    <RandWords width={600} fontSize='80px' lineHeight='90px' />
   </React.Fragment>
 )
 
