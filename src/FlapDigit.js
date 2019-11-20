@@ -3,12 +3,15 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { Flap } from './Flap'
 
+// width: ${props => props.width + 'px'};
+// height: ${props => props.height + 'px'};
+
 const InnerDigit = styled.div`
   position: relative;
   display: inline-block;
   box-sizing: border-box;
-  width: ${props => props.width + 'px'};
-  height: ${props => props.height + 'px'};
+  width: 1ch;
+  height: 1em;
   font-size: ${props => props.fontSize};
   line-height: ${props => props.lineHeight};
   text-align: ${props => props.textAlign};
@@ -30,12 +33,12 @@ const Bar = styled.div`
 
 export const FlapDigit = ({ value, prevValue, ...restProps }) => {
   return (
-    <InnerDigit {...restProps}>
+    <InnerDigit className='innerDigit' {...restProps}>
       <Flap {...restProps}>{value}</Flap>
       <Flap bottom {...restProps}>{prevValue}</Flap>
       <Flap key={`top-${prevValue}`} animated {...restProps}>{prevValue}</Flap>
       <Flap key={`bottom-${value}`} bottom animated {...restProps}>{value}</Flap>
-      <Bar {...restProps} />
+      {/* <Bar {...restProps} /> */}
     </InnerDigit>
   )
 }

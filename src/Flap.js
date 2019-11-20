@@ -38,13 +38,9 @@ export const Flap = styled.div`
   animation-duration: ${props => props.animationDuration};
   animation-timing-function: ${props => props.bottom ? 'ease-out' : 'ease-in'};
   z-index: ${props => props.animated ? '2' : '1'};
-  clip: ${props => {
-    const halfHeight = parseInt(props.height / 2)
-    const flapOffset = props.bottom ? props.height - halfHeight : halfHeight
-    return props.bottom
-      ? `rect(${flapOffset}px, ${props.width}px, ${props.height}px, 0)`
-      : `rect(0, ${props.width}px, ${flapOffset}px, 0)`
-    }
+  clip-path: ${props => props.bottom
+      ? 'polygon(0 100%, 100% 100%, 100% 50%, 0 50%)'
+      : 'polygon(0 50%, 100% 50%, 100% 0, 0 0)'
   };
 `
 
