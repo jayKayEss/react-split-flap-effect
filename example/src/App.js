@@ -160,17 +160,18 @@ export const App = () => {
 
   return (
     <div>
-      <FlapDisplay
-        className='demoFlapper'
-        digitClassName='demoFlapperDigit'
-        value={value}
-        chars={mode === Modes.Numeric ? Presets.NUM : Presets.ALPHANUM}
-        words={mode === Modes.Words ? Words : undefined}
-        length={length}
-        timing={timing}
-        width={width}
-        height={height}
-      />
+      <div className='demoFlapper'>
+        <FlapDisplay
+          className='demoFlapperDigit'
+          value={value}
+          chars={mode === Modes.Numeric ? Presets.NUM : Presets.ALPHANUM}
+          words={mode === Modes.Words ? Words : undefined}
+          length={length}
+          timing={timing}
+          width={width}
+          height={height}
+        />
+      </div>
       <form>
         <fieldset>
           <legend>Mode</legend>

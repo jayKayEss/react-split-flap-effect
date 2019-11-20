@@ -10,7 +10,6 @@ const padValue = (v, length, padding, padStart) => padStart
   : String(v).padEnd(length, padding)
 
 export const FlapDisplay = ({
-  className,
   value,
   chars,
   words,
@@ -20,18 +19,8 @@ export const FlapDisplay = ({
   render,
   ...restProps
 }) => {
-  const [derivedProps, setDerivedProps] = useState({})
   const [stack, setStack] = useState([])
   const [digits, setDigits] = useState([])
-
-  useEffect(() => {
-    setDerivedProps({
-      animationDuration: restProps.timing + 'ms',
-      fontSize: restProps.height + 'px',
-      lineHeight: restProps.height + 'px',
-      ...restProps
-    })
-  }, Object.values(restProps))
 
   useEffect(() => {
     if (words) {
@@ -50,6 +39,11 @@ export const FlapDisplay = ({
     }
   }, [value])
 
+  const derivedProps = {
+    ...restProps,
+    wordMode: !!words
+  }
+
   const children = digits.map((digit, i) => (
     <FlapStack
       key={i}
@@ -60,7 +54,7 @@ export const FlapDisplay = ({
   ))
 
   return (
-    <div className={className}>
+    <div>
       {render ? render({ ...derivedProps, children }) : children}
     </div>
   )
@@ -75,7 +69,6 @@ FlapDisplay.defaultProps = {
 
 FlapDisplay.propTypes = {
   className: PropTypes.string,
-  digitClassName: PropTypes.string,
   value: PropTypes.string.isRequired,
   chars: PropTypes.string,
   words: PropTypes.arrayOf(PropTypes.string),

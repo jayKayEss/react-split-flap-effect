@@ -24,12 +24,10 @@ export const FlapStack = ({ stack, value, timing, ...restProps }) => {
   }, [stack])
 
   useEffect(() => {
-    const { current, previous } = cursor
-    const target = Math.max(stack.indexOf(value), 0)
-    setCursor({ current, previous, target })
+    const target = Math.max(stackRef.current.indexOf(value), 0)
 
     const timer = setInterval(() => {
-      const { current, target } = cursorRef.current
+      const { current } = cursorRef.current
       const stack = stackRef.current
 
       if (current === target) {

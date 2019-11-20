@@ -13,18 +13,18 @@
     transform: rotateX(90deg)
   }
 
-  80% {
+  90% {
     transform: rotateX(20deg)
   }
 
-  60%, to {
+  80%, to {
     transform: rotateX(0deg)
   }
 }
 
 .digit {
   color: white;
-  background: black;
+  background-color: black;
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -32,6 +32,10 @@
   height: 1em;
   line-height: 1em;
   text-align: center;
+
+  &.words {
+    width: 100%;
+  }
 }
 
 .bar {
@@ -41,7 +45,7 @@
   box-sizing: border-box;
   height: 2px;
   top: calc(50% - 2px / 2);
-  background: inherit;
+  background-color: inherit;
 }
 
 .flap {
@@ -50,6 +54,7 @@
   width: 100%;
   animation-fill-mode: forwards;
   transform-origin: center;
+  background-color: inherit;
   background: inherit;
   z-index: 1;
   border-radius: inherit;

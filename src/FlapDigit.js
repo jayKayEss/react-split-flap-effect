@@ -2,10 +2,15 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { Flap } from './Flap'
 import styles from './styles.css'
+import classnames from 'classnames'
 
-export const FlapDigit = ({ digitClassName, value, prevValue, final, ...restProps }) => {
+export const FlapDigit = ({ className, value, prevValue, final, wordMode, ...restProps }) => {
+  const classes = classnames(className, styles.digit, {
+    [styles.words]: wordMode
+  })
+
   return (
-    <div className={`${digitClassName} ${styles.digit}`}>
+    <div className={classes}>
       <Flap {...restProps}>{value}</Flap>
       <Flap bottom {...restProps}>{prevValue}</Flap>
       <Flap animated final={final} {...restProps}>{prevValue}</Flap>
@@ -22,7 +27,7 @@ FlapDigit.defaultProps = {
 }
 
 FlapDigit.propTypes = {
-  digitClassName: PropTypes.string,
+  className: PropTypes.string,
   value: PropTypes.string,
   prevValue: PropTypes.string,
   final: PropTypes.bool
