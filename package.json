@@ -27,11 +27,13 @@
     "react-dom": "^15.0.0 || ^16.0.0"
   },
   "devDependencies": {
+    "@emotion/core": "^10.0.22",
+    "@emotion/styled": "^10.0.23",
     "@svgr/rollup": "^2.4.1",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.5",
+    "babel-plugin-emotion": "^10.0.23",
     "babel-plugin-external-helpers": "^6.22.0",
-    "babel-plugin-styled-components": "^1.10.6",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
@@ -61,7 +63,5 @@
   "files": [
     "dist"
   ],
-  "dependencies": {
-    "styled-components": "^4.4.1"
-  }
+  "dependencies": {}
 }

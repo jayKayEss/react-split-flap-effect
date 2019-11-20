@@ -45,7 +45,7 @@ export default {
       exclude: 'node_modules/**',
       plugins: [
         'external-helpers',
-        'babel-plugin-styled-components'
+        'babel-plugin-emotion'
       ]
     }),
     resolve(),
