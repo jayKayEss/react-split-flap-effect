@@ -10,6 +10,7 @@ const padValue = (v, length, padding, padStart) => padStart
   : String(v).padEnd(length, padding)
 
 export const FlapDisplay = ({
+  className,
   value,
   chars,
   words,
@@ -59,7 +60,7 @@ export const FlapDisplay = ({
   ))
 
   return (
-    <div>
+    <div className={className}>
       {render ? render({ ...derivedProps, children }) : children}
     </div>
   )
@@ -82,6 +83,7 @@ FlapDisplay.defaultProps = {
 }
 
 FlapDisplay.propTypes = {
+  className: PropTypes.string,
   value: PropTypes.string.isRequired,
   chars: PropTypes.string,
   words: PropTypes.arrayOf(PropTypes.string),

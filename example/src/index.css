@@ -6,6 +6,13 @@ body {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
-.innerDigit {
+.demoFlapper {
+  margin: 25px;
+}
+
+.demoFlapper .digit {
   font-size: 80px;
+  line-height: 80px;
+  height: 80px;
+  width: 60px;
 }

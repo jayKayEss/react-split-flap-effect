@@ -1,0 +1,81 @@
+@keyframes flapDownTop {
+  from {
+    transform: rotateX(0deg)
+  }
+
+  50%, to {
+    transform: rotateX(90deg)
+  }
+}
+
+@keyframes flapDownBottom {
+  from, 50% {
+    transform: rotateX(90deg)
+  }
+
+  80% {
+    transform: rotateX(20deg)
+  }
+
+  60%, to {
+    transform: rotateX(0deg)
+  }
+}
+
+.digit {
+  color: white;
+  background: black;
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 1ch;
+  height: 1em;
+  text-align: center;
+}
+
+.bar {
+  width: 100%;
+  position: absolute;
+  z-index: 3;
+  box-sizing: border-box;
+  height: 2px;
+  top: calc(50% - 2px / 2);
+  background: inherit;
+}
+
+.flap {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  animation-fill-mode: forwards;
+  transform-origin: center;
+  background: inherit;
+  z-index: 1;
+  border-radius: inherit;
+
+  &.above {
+    z-index: 2;
+  }
+
+  &.animated {
+    animation-duration: 200ms;
+  }
+
+  &.top {
+    clip-path: polygon(0 50%, 100% 50%, 100% 0, 0 0);
+
+    &.animated {
+      animation-name: flapDownTop;
+      animation-timing-function: ease-in;
+    }
+  }
+
+  &.bottom {
+    clip-path: polygon(0 100%, 100% 100%, 100% 50%, 0 50%);
+
+    &.animated {
+      animation-name: flapDownBottom;
+      animation-timing-function: ease-out;
+    }
+  }
+}

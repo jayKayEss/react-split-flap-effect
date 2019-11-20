@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-fragments */
 import React, { useEffect, useState, useRef } from 'react'
 import { FlapDisplay, Presets } from 'react-flapper'
+import styles from './index.css'
 
 // const styles = {
 //   margin: '25px'
@@ -160,6 +161,7 @@ export const App = () => {
   return (
     <div>
       <FlapDisplay
+        className='demoFlapper'
         value={value}
         chars={mode === Modes.Numeric ? Presets.NUM : Presets.ALPHANUM}
         words={mode === Modes.Words ? Words : undefined}
