@@ -13,8 +13,8 @@ export const FlapDigit = ({ className, value, prevValue, final, wordMode, ...res
     <div className={classes}>
       <Flap {...restProps}>{value}</Flap>
       <Flap bottom {...restProps}>{prevValue}</Flap>
-      <Flap animated final={final} {...restProps}>{prevValue}</Flap>
-      {final && <Flap bottom animated final {...restProps}>{value}</Flap>}
+      <Flap key={`top-${prevValue}`} animated final={final} {...restProps}>{prevValue}</Flap>
+      {final && <Flap key={`bottom-${value}`} bottom animated final {...restProps}>{value}</Flap>}
       <div className={styles.bar} />
     </div>
   )

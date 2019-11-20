@@ -13,37 +13,36 @@ const InitialCursor = {
 export const FlapStack = ({ stack, value, timing, ...restProps }) => {
   const [cursor, setCursor] = useState(InitialCursor)
 
-  const stackRef = useRef(stack)
-  stackRef.current = stack
-
-  const cursorRef = useRef(cursor)
-  cursorRef.current = cursor
-
   useEffect(() => {
     setCursor(InitialCursor)
   }, [stack])
 
   useEffect(() => {
-    const target = Math.max(stackRef.current.indexOf(value), 0)
+    let { current, previous } = cursor
+    const target = Math.max(stack.indexOf(value), 0)
+
+    const increment = () => {
+      previous = current
+      if (current >= stack.length - 1) {
+        current = 0
+      } else {
+        current = current + 1
+      }
+
+      setCursor({
+        current,
+        previous,
+        target
+      })
+    }
+
+    increment()
 
     const timer = setInterval(() => {
-      const { current } = cursorRef.current
-      const stack = stackRef.current
-
       if (current === target) {
         clearInterval(timer)
-      } else if (current >= stack.length - 1) {
-        setCursor({
-          current: 0,
-          previous: current,
-          target
-        })
       } else {
-        setCursor({
-          current: current + 1,
-          previous: current,
-          target
-        })
+        increment()
       }
     }, timing)
 
