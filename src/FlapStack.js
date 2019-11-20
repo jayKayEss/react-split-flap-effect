@@ -52,11 +52,12 @@ export const FlapStack = ({ stack, value, timing, ...restProps }) => {
     return () => clearInterval(timer)
   }, [stack, value])
 
-  const { current, previous } = cursor
+  const { current, previous, target } = cursor
   return (
     <FlapDigit
       value={stack[current]}
       prevValue={stack[previous]}
+      final={current === target}
       {...restProps}
     />
   )

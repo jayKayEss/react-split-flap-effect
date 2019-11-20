@@ -3,12 +3,14 @@ import PropTypes from 'prop-types'
 import styles from './styles.css'
 import classnames from 'classnames'
 
-export const Flap = ({ above, bottom, animated, children }) => {
+console.log('STYLESSSS', styles)
+
+export const Flap = ({ above, bottom, animated, final, children }) => {
   const classes = classnames('flap', styles.flap, {
-    [styles.above]: animated, // change this
     [styles.bottom]: bottom,
     [styles.top]: !bottom,
-    [styles.animated]: animated
+    [styles.animated]: animated,
+    [styles.final]: final
   })
   return (
     <div className={classes}>{children}</div>
@@ -18,11 +20,13 @@ export const Flap = ({ above, bottom, animated, children }) => {
 Flap.defaultProps = {
   above: false,
   bottom: false,
-  animated: false
+  animated: false,
+  final: false
 }
 
 Flap.propTypes = {
   above: PropTypes.bool,
   bottom: PropTypes.bool,
-  animated: PropTypes.bool
+  animated: PropTypes.bool,
+  final: PropTypes.bool
 }

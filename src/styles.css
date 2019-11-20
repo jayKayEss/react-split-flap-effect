@@ -53,18 +53,21 @@
   z-index: 1;
   border-radius: inherit;
 
-  &.above {
-    z-index: 2;
-  }
-
   &.animated {
-    animation-duration: 200ms;
+    animation-duration: 300ms;
+    z-index: 2;
   }
 
   &.top {
     clip-path: polygon(0 50%, 100% 50%, 100% 0, 0 0);
 
     &.animated {
+      transform: rotateX(50deg);
+      opacity: 0.70;
+    }
+
+    &.animated.final {
+      opacity: 1;
       animation-name: flapDownTop;
       animation-timing-function: ease-in;
     }
@@ -73,7 +76,7 @@
   &.bottom {
     clip-path: polygon(0 100%, 100% 100%, 100% 50%, 0 50%);
 
-    &.animated {
+    &.animated.final {
       animation-name: flapDownBottom;
       animation-timing-function: ease-out;
     }

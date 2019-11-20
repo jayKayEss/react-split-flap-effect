@@ -70,7 +70,7 @@ FlapDisplay.defaultProps = {
   chars: Presets.NUM,
   length: 6,
   padding: ' ',
-  timing: 150,
+  timing: 50,
   width: 64,
   height: 100,
   color: '#eee',

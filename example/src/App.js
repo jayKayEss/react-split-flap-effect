@@ -131,7 +131,7 @@ const randomValue = (mode, length) => {
 export const App = () => {
   const [mode, setMode] = useState(Modes.Numeric)
   const [length, setLength] = useState(6)
-  const [timing, setTiming] = useState(150)
+  const [timing, setTiming] = useState(50)
   const [width, setWidth] = useState(50)
   const [height, setHeight] = useState(64)
   const [value, setValue] = useState(randomValue(mode, length))
