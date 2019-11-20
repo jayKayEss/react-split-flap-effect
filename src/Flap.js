@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
-import styled from '@emotion/styled'
-import { keyframes } from '@emotion/core'
+import styled, { keyframes } from 'styled-components'
 
 const flapDownTop = keyframes`
   from {
@@ -26,33 +25,28 @@ const flapDownBottom = keyframes`
   }
 `
 
-export const Flap = styled.div(
-  {
-    position: 'absolute',
-    height: '100%',
-    width: '100%',
-    animationFillMode: 'forwards',
-    transformOrigin: 'center'
-  },
-  props => {
+export const Flap = styled.div`
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  animation-fill-mode: forwards;
+  transform-origin: center;
+  color: ${props => props.color};
+  background: ${props => props.background};
+  border-radius: ${props => props.borderRadius};
+  animation-name: ${props => props.animated ? (props.bottom ? flapDownBottom : flapDownTop) : null};
+  animation-duration: ${props => props.animationDuration};
+  animation-timing-function: ${props => props.bottom ? 'ease-out' : 'ease-in'};
+  z-index: ${props => props.animated ? '2' : '1'};
+  clip: ${props => {
     const halfHeight = parseInt(props.height / 2)
     const flapOffset = props.bottom ? props.height - halfHeight : halfHeight
-    return {
-      color: props.color,
-      background: props.background,
-      borderRadius: props.borderRadius,
-      animationDuration: props.animationDuration,
-      clip: props.bottom
-        ? `rect(${flapOffset}px, ${props.width}px, ${props.height}px, 0)`
-        : `rect(0, ${props.width}px, ${flapOffset}px, 0);`,
-      animationName: props.animated ? (
-        props.bottom ? flapDownBottom : flapDownTop
-      ) : null,
-      animationDurationFunction: props.bottom ? 'ease-out' : 'ease-in',
-      zIndex: props.animated ? '2' : '1'
+    return props.bottom
+      ? `rect(${flapOffset}px, ${props.width}px, ${props.height}px, 0)`
+      : `rect(0, ${props.width}px, ${flapOffset}px, 0)`
     }
-  }
-)
+  };
+`
 
 Flap.defaultProps = {
   bottom: false,

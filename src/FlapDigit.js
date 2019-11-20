@@ -1,40 +1,32 @@
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { Flap } from './Flap'
 
-const InnerDigit = styled.div(
-  {
-    position: 'relative',
-    display: 'inline-block',
-    boxSizing: 'border-box'
-  },
-  props => ({
-    width: props.width + 'px',
-    height: props.height + 'px',
-    fontSize: props.fontSize,
-    lineHeight: props.lineHeight,
-    textAlign: props.textAlign,
-    background: props.background,
-    margin: props.margin,
-    border: props.border,
-    borderRadius: props.borderRadius
-  })
-)
+const InnerDigit = styled.div`
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  width: ${props => props.width + 'px'};
+  height: ${props => props.height + 'px'};
+  font-size: ${props => props.fontSize};
+  line-height: ${props => props.lineHeight};
+  text-align: ${props => props.textAlign};
+  background: ${props => props.background};
+  margin: ${props => props.margin};
+  border: ${props => props.border};
+  border-radius: ${props => props.borderRadius};
+`
 
-const Bar = styled.div(
-  {
-    width: '100%',
-    position: 'absolute',
-    zIndex: 3,
-    boxSizing: 'border-box'
-  },
-  props => ({
-    height: props.hingeWidth + 'px',
-    top: `calc(50% - ${props.hingeWidth}px / 2)`,
-    background: props.background
-  })
-)
+const Bar = styled.div`
+  width: 100%;
+  position: absolute;
+  z-index: 3;
+  box-sizing: border-box;
+  height: ${props => props.hingeWidth + 'px'};
+  top: ${props => `calc(50% - ${props.hingeWidth}px / 2)`};
+  background: ${props => props.background};
+`
 
 export const FlapDigit = ({ value, prevValue, ...restProps }) => {
   return (

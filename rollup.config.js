@@ -16,14 +16,17 @@ export default {
     {
       file: pkg.main,
       format: 'cjs',
-      sourcemap: true
+      sourcemap: true,
+      globals: { 'styled-components': 'styled' }
     },
     {
       file: pkg.module,
       format: 'es',
-      sourcemap: true
+      sourcemap: true,
+      globals: { 'styled-components': 'styled' }
     }
   ],
+  external: ['styled-components'],
   plugins: [
     external(),
     postcss({
@@ -42,7 +45,7 @@ export default {
       exclude: 'node_modules/**',
       plugins: [
         'external-helpers',
-        'babel-plugin-emotion'
+        'babel-plugin-styled-components'
       ]
     }),
     resolve(),
