@@ -6,7 +6,7 @@ import classnames from 'classnames'
 console.log('STYLESSSS', styles)
 
 export const Flap = ({ above, bottom, animated, final, children }) => {
-  const classes = classnames('flap', styles.flap, {
+  const classes = classnames(styles.flap, {
     [styles.bottom]: bottom,
     [styles.top]: !bottom,
     [styles.animated]: animated,

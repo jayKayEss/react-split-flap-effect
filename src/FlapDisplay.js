@@ -70,37 +70,17 @@ FlapDisplay.defaultProps = {
   chars: Presets.NUM,
   length: 6,
   padding: ' ',
-  timing: 50,
-  width: 64,
-  height: 100,
-  color: '#eee',
-  background: '#333',
-  textAlign: 'center',
-  margin: '0 0 0 1px',
-  border: '1px solid #666',
-  borderRadius: '4px',
-  hingeWidth: 2
+  timing: 30
 }
 
 FlapDisplay.propTypes = {
   className: PropTypes.string,
+  digitClassName: PropTypes.string,
   value: PropTypes.string.isRequired,
   chars: PropTypes.string,
   words: PropTypes.arrayOf(PropTypes.string),
   length: PropTypes.number,
   padding: PropTypes.string,
   padStart: PropTypes.bool,
-  timing: PropTypes.number,
-  animationDuration: PropTypes.string,
-  width: PropTypes.number,
-  height: PropTypes.number,
-  color: PropTypes.string,
-  background: PropTypes.string,
-  textAlign: PropTypes.string,
-  margin: PropTypes.string,
-  border: PropTypes.string,
-  borderRadius: PropTypes.string,
-  hingeWidth: PropTypes.number,
-  fontSize: PropTypes.string,
-  lineHeight: PropTypes.string
+  timing: PropTypes.number
 }

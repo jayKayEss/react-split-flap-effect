@@ -10,9 +10,6 @@ body {
   margin: 25px;
 }
 
-.demoFlapper .digit {
+.demoFlapperDigit {
   font-size: 80px;
-  line-height: 80px;
-  height: 80px;
-  width: 60px;
 }

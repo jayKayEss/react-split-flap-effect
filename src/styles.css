@@ -28,8 +28,9 @@
   position: relative;
   display: inline-block;
   box-sizing: border-box;
-  width: 1ch;
+  width: 1.5ch;
   height: 1em;
+  line-height: 1em;
   text-align: center;
 }
 

@@ -3,14 +3,14 @@ import React from 'react'
 import { Flap } from './Flap'
 import styles from './styles.css'
 
-export const FlapDigit = ({ value, prevValue, final, ...restProps }) => {
+export const FlapDigit = ({ digitClassName, value, prevValue, final, ...restProps }) => {
   return (
-    <div className={`${styles.digit} digit`}>
+    <div className={`${digitClassName} ${styles.digit}`}>
       <Flap {...restProps}>{value}</Flap>
       <Flap bottom {...restProps}>{prevValue}</Flap>
       <Flap animated final={final} {...restProps}>{prevValue}</Flap>
       {final && <Flap bottom animated final {...restProps}>{value}</Flap>}
-      <div className={`${styles.bar} bar`} />
+      <div className={styles.bar} />
     </div>
   )
 }
@@ -22,6 +22,7 @@ FlapDigit.defaultProps = {
 }
 
 FlapDigit.propTypes = {
+  digitClassName: PropTypes.string,
   value: PropTypes.string,
   prevValue: PropTypes.string,
   final: PropTypes.bool

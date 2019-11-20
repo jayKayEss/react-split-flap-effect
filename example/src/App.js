@@ -131,7 +131,7 @@ const randomValue = (mode, length) => {
 export const App = () => {
   const [mode, setMode] = useState(Modes.Numeric)
   const [length, setLength] = useState(6)
-  const [timing, setTiming] = useState(50)
+  const [timing, setTiming] = useState(30)
   const [width, setWidth] = useState(50)
   const [height, setHeight] = useState(64)
   const [value, setValue] = useState(randomValue(mode, length))
@@ -162,6 +162,7 @@ export const App = () => {
     <div>
       <FlapDisplay
         className='demoFlapper'
+        digitClassName='demoFlapperDigit'
         value={value}
         chars={mode === Modes.Numeric ? Presets.NUM : Presets.ALPHANUM}
         words={mode === Modes.Words ? Words : undefined}
