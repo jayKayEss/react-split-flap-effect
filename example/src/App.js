@@ -130,7 +130,9 @@ const randomValue = (mode, length) => {
 export const App = () => {
   const [mode, setMode] = useState(Modes.Numeric)
   const [length, setLength] = useState(6)
+  const [timing, setTiming] = useState(150)
   const [width, setWidth] = useState(50)
+  const [height, setHeight] = useState(64)
   const [value, setValue] = useState(randomValue(mode, length))
 
   const modeRef = useRef(mode)
@@ -142,6 +144,7 @@ export const App = () => {
   useEffect(() => {
     setLength(mode === Modes.Alphanumeric ? 12 : 6)
     setWidth(Widths[mode])
+    setHeight(64)
     setValue(randomValue(mode, length))
 
     const timing = mode === Modes.Alphanumeric ? 6000 : 3000
@@ -161,9 +164,9 @@ export const App = () => {
         chars={mode === Modes.Numeric ? Presets.NUM : Presets.ALPHANUM}
         words={mode === Modes.Words ? Words : undefined}
         length={length}
+        timing={timing}
         width={width}
-        height={64}
-        fontSize='64px'
+        height={height}
       />
       <form>
         <fieldset>
@@ -182,12 +185,15 @@ export const App = () => {
           </label>
         </fieldset>
         <fieldset>
-          <legend>Basic Options</legend>
+          <legend>Required Options</legend>
           <label>
-            Length <input type='number' name='length' value={length} onChange={e => setLength(parseInt(e.target.value))} />
+            Length <input type='number' name='length' value={length} min='1' onChange={e => setLength(parseInt(e.target.value))} />
           </label>
           <label>
-            Width <input type='number' name='width' value={width} onChange={e => setWidth(parseInt(e.target.value))} />
+            Width <input type='number' name='width' value={width} min='1' onChange={e => setWidth(parseInt(e.target.value))} />
+          </label>
+          <label>
+            Height <input type='number' name='height' value={height} min='1' onChange={e => setHeight(parseInt(e.target.value))} />
           </label>
         </fieldset>
       </form>
