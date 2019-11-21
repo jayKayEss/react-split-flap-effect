@@ -28,13 +28,18 @@
   position: relative;
   display: inline-block;
   box-sizing: border-box;
-  width: 1.5ch;
+  width: 1.1ch;
   height: 1em;
+  font-family: sans-serif;
   line-height: 1em;
   text-align: center;
 
-  &.words {
+  &[data-mode="words"] {
     width: 100%;
+  }
+
+  &[data-mode="alpha"] {
+    width: 1.7ch;
   }
 }
 

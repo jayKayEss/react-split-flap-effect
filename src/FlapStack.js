@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FlapDigit } from './FlapDigit'
 
 // Set these three values as one state var

@@ -3,13 +3,17 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Roboto Condensed', sans-serif;
+  /* font-family: 'Roboto Condensed', sans-serif; */
 }
 
 .demoFlapper {
   padding: 25px;
 }
 
-.demoFlapperDigit {
+.demoFlapperDigit[data-kind="digit"] {
   font-size: 80px;
+}
+
+.demoFlapperDigit[data-kind="digit"][data-mode="alpha"] {
+  font-size: 64px;
 }

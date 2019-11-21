@@ -3,6 +3,12 @@ import React, { useEffect, useState } from 'react'
 import { FlapStack } from './FlapStack'
 import { Presets } from './Presets'
 
+const Modes = {
+  Numeric: 'num',
+  Alphanumeric: 'alpha',
+  Words: 'words'
+}
+
 const splitChars = v => String(v).split('').map(c => c.toUpperCase())
 
 const padValue = (v, length, padding, padStart) => padStart
@@ -20,13 +26,16 @@ export const FlapDisplay = ({
   ...restProps
 }) => {
   const [stack, setStack] = useState([])
+  const [mode, setMode] = useState(Modes.Numeric)
   const [digits, setDigits] = useState([])
 
   useEffect(() => {
     if (words) {
       setStack(words)
+      setMode(Modes.Words)
     } else {
       setStack(splitChars(chars))
+      setMode(chars.match(/[a-z]/i) ? Modes.Alphanumeric : Modes.Numeric)
     }
   }, [chars, words])
 
@@ -39,23 +48,19 @@ export const FlapDisplay = ({
     }
   }, [value])
 
-  const derivedProps = {
-    ...restProps,
-    wordMode: !!words
-  }
-
   const children = digits.map((digit, i) => (
     <FlapStack
       key={i}
       stack={stack}
       value={digit}
-      {...derivedProps}
+      mode={mode}
+      {...restProps}
     />
   ))
 
   return (
     <div>
-      {render ? render({ ...derivedProps, children }) : children}
+      {render ? render({ ...restProps, children }) : children}
     </div>
   )
 }
