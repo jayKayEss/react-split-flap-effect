@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-fragments */
 import React, { useEffect, useState, useRef } from 'react'
 import { FlapDisplay, Presets } from 'react-flapper'
+import 'react-flapper/extras/themes.css'
 import './index.css'
 
 const randomNum = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
@@ -33,6 +34,7 @@ const randomValue = (mode, length) => {
 
 export const App = () => {
   const [mode, setMode] = useState(Modes.Numeric)
+  const [theme, setTheme] = useState('')
   const [length, setLength] = useState(6)
   const [timing, setTiming] = useState(30)
   const [value, setValue] = useState(randomValue(mode, length))
@@ -62,7 +64,7 @@ export const App = () => {
     <div>
       <div>
         <FlapDisplay
-          className='demoFlapper'
+          className={`demoFlapper ${theme}`}
           value={value}
           chars={mode === Modes.Numeric ? Presets.NUM : Presets.ALPHANUM}
           words={mode === Modes.Words ? Words : undefined}
@@ -73,7 +75,7 @@ export const App = () => {
       </div>
       <form>
         <fieldset>
-          <legend>Mode</legend>
+          Mode:
           <label>
             <input type='radio' name='mode' value={Modes.Numeric} checked={mode === Modes.Numeric} onChange={() => setMode(Modes.Numeric)} />
             Numeric
@@ -85,6 +87,16 @@ export const App = () => {
           <label>
             <input type='radio' name='mode' value={Modes.Words} checked={mode === Modes.Words} onChange={() => setMode(Modes.Words)} />
             Words
+          </label>
+          <label>
+            Theme:
+            <select name='theme' value={theme} onChange={(e) => setTheme(e.target.value)}>
+              <option value=''>Default</option>
+              <option value='S'>S</option>
+              <option value='M'>M</option>
+              <option value='L'>L</option>
+              <option value='XL'>XL</option>
+            </select>
           </label>
         </fieldset>
         <fieldset>

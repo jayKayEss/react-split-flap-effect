@@ -10,10 +10,9 @@ body {
 }
 
 .demoFlapper [data-kind="digit"] {
-  font-size: 80px;
-  /* font-family: 'Roboto Condensed', sans-serif; */
+  font-size: 30px;
 }
 
-.demoFlapper [data-kind="digit"][data-mode="alpha"] {
+/* .demoFlapper [data-kind="digit"][data-mode="alpha"] {
   font-size: 64px;
-}
+} */

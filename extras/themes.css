@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Share&display=swap');
+
+.S [data-kind="digit"],
+.M [data-kind="digit"],
+.L [data-kind="digit"],
+.XL [data-kind="digit"] {
+  font-family: 'Share', sans-serif;
+  width: 1.0ch;
+}
+
+.S [data-kind="digit"][data-mode="alpha"],
+.M [data-kind="digit"][data-mode="alpha"],
+.L [data-kind="digit"][data-mode="alpha"],
+.XL [data-kind="digit"][data-mode="alpha"] {
+  width: 1.2ch;
+}
+
+.S [data-kind="digit"][data-mode="words"],
+.M [data-kind="digit"][data-mode="words"],
+.L [data-kind="digit"][data-mode="words"],
+.XL [data-kind="digit"][data-mode="words"] {
+  width: 100%;
+}
+
+.S [data-kind="digit"] {
+  font-size: 18px;
+  line-height: 19px;
+}
+
+.M [data-kind="digit"] {
+  font-size: 30px;
+  line-height: 32px;
+}
+
+.L [data-kind="digit"] {
+  font-size: 48px;
+  line-height: 52px;
+}
+
+.XL [data-kind="digit"] {
+  font-size: 78px;
+  line-height: 82px;
+}
