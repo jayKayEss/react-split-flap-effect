@@ -191,7 +191,7 @@ export const App = () => {
         <fieldset>
           <legend>Required Options</legend>
           <label>
-            Length <input type='number' name='length' value={length} min='1' onChange={e => setLength(parseInt(e.target.value))} />
+            Length <input type='number' name='length' value={length} min='1' onChange={e => setLength(Number(e.target.value))} />
           </label>
           <label>
             Width <input type='number' name='width' value={width} min='1' onChange={e => setWidth(parseInt(e.target.value))} />

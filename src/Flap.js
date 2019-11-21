@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 import styles from './styles.css'
 import classnames from 'classnames'
 
-console.log('STYLESSSS', styles)
-
 export const Flap = ({ above, bottom, animated, final, children }) => {
   const classes = classnames(styles.flap, {
     [styles.bottom]: bottom,

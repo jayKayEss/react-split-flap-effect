@@ -11,9 +11,12 @@ const Modes = {
 
 const splitChars = v => String(v).split('').map(c => c.toUpperCase())
 
-const padValue = (v, length, padding, padStart) => padStart
-  ? String(v).padStart(length, padding)
-  : String(v).padEnd(length, padding)
+const padValue = (v, length, padding, padStart) => {
+  const trimmed = v.slice(0, length)
+  return padStart
+    ? String(trimmed).padStart(length, padding)
+    : String(trimmed).padEnd(length, padding)
+}
 
 export const FlapDisplay = ({
   id,
@@ -31,6 +34,7 @@ export const FlapDisplay = ({
   const [stack, setStack] = useState([])
   const [mode, setMode] = useState(Modes.Numeric)
   const [digits, setDigits] = useState([])
+  const [children, setChildren] = useState([])
 
   useEffect(() => {
     if (words) {
@@ -49,17 +53,19 @@ export const FlapDisplay = ({
       const usePadStart = padStart || !!value.match(/^[0-9]*$/)
       setDigits(splitChars(padValue(value, length, padding, usePadStart)))
     }
-  }, [value])
+  }, [value, chars, words, length, padding, padStart])
 
-  const children = digits.map((digit, i) => (
-    <FlapStack
-      key={i}
-      stack={stack}
-      value={digit}
-      mode={mode}
-      {...restProps}
-    />
-  ))
+  useEffect(() => {
+    setChildren(digits.map((digit, i) => (
+      <FlapStack
+        key={i}
+        stack={stack}
+        value={digit}
+        mode={mode}
+        {...restProps}
+      />
+    )))
+  }, [digits])
 
   return (
     <div id={id} className={className} css={css}>
@@ -70,7 +76,6 @@ export const FlapDisplay = ({
 
 FlapDisplay.defaultProps = {
   chars: Presets.NUM,
-  length: 6,
   padding: ' ',
   timing: 30
 }

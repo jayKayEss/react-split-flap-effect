@@ -5,7 +5,7 @@ import { FlapDigit } from './FlapDigit'
 // Set these three values as one state var
 // to avoid in-between render states
 const InitialCursor = {
-  current: 0,
+  current: -1,
   previous: -1,
   target: 0
 }
