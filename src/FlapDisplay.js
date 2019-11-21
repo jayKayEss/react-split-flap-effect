@@ -65,7 +65,7 @@ export const FlapDisplay = ({
         {...restProps}
       />
     )))
-  }, [digits])
+  }, [digits, ...Object.values(restProps)])
 
   return (
     <div id={id} className={className} css={css}>
@@ -77,7 +77,8 @@ export const FlapDisplay = ({
 FlapDisplay.defaultProps = {
   chars: Presets.NUM,
   padding: ' ',
-  timing: 30
+  timing: 30,
+  hinge: true
 }
 
 FlapDisplay.propTypes = {
@@ -90,5 +91,6 @@ FlapDisplay.propTypes = {
   length: PropTypes.number,
   padding: PropTypes.string,
   padStart: PropTypes.bool,
-  timing: PropTypes.number
+  timing: PropTypes.number,
+  hinge: PropTypes.bool
 }

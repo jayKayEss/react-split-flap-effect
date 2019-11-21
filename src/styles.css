@@ -43,13 +43,15 @@
   }
 }
 
-.bar {
+.hinge {
   width: 100%;
   position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 3;
   box-sizing: border-box;
-  height: 2px;
-  top: calc(50% - 2px / 2);
+  height: 0.04em;
   background-color: inherit;
 }
 

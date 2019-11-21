@@ -1,39 +1,9 @@
 /* eslint-disable react/jsx-fragments */
 import React, { useEffect, useState, useRef } from 'react'
 import { FlapDisplay, Presets } from 'react-flapper'
-import styles from './index.css'
-
-// const styles = {
-//   margin: '25px'
-// }
+import './index.css'
 
 const randomNum = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
-
-// const Rando = (props) => {
-//   const min = 100000
-//   const max = 999999
-
-//   const [value, setValue] = useState(randomNum(min, max))
-
-//   useEffect(() => {
-//     const timer = setInterval(() => {
-//       setValue(randomNum(min, max))
-//     }, 3000)
-
-//     return () => {
-//       clearTimeout(timer)
-//     }
-//   }, [])
-
-//   return (
-//     <div style={styles}>
-//       <FlapDisplay
-//         value={value.toString()}
-//         {...props}
-//       />
-//     </div>
-//   )
-// }
 
 const Words = [
   '',
@@ -47,77 +17,10 @@ const Words = [
   'Boston'
 ]
 
-// const randWord = () => words[Math.floor(Math.random() * (words.length - 1)) + 1]
-
-// const RandWords = (props) => {
-//   const [value, setValue] = useState(randWord())
-
-//   useEffect(() => {
-//     const timer = setInterval(() => {
-//       setValue(randWord())
-//     }, 3000)
-
-//     return () => {
-//       clearTimeout(timer)
-//     }
-//   }, [])
-
-//   return (
-//     <div style={styles}>
-//       <FlapDisplay
-//         value={value}
-//         words={words}
-//         {...props}
-//       />
-//     </div>
-//   )
-// }
-
-// const InnerDisplay = ({ children, fontSize, lineHeight, background }) => {
-//   const placeholderStyle = {
-//     color: background,
-//     fontSize,
-//     lineHeight,
-//     display: 'inline-block',
-//     verticalAlign: 'top'
-//   }
-
-//   return (
-//     <React.Fragment>
-//       <div style={placeholderStyle}>$</div>
-//       {children[0]}
-//       {children[1]}
-//       {children[2]}
-//       <div style={placeholderStyle}>.</div>
-//       {children[4]}
-//       {children[5]}
-//       {children[6]}
-//     </React.Fragment>
-//   )
-// }
-
-// const App = () => (
-//   <React.Fragment>
-//     {/* <Rando timing={500} /> */}
-//     {/* <Rando timing={300} /> */}
-//     {/* <Rando timing={150} animationDuration={500} /> */}
-//     <Rando render={InnerDisplay} />
-//     <RandWords width={600} fontSize='80px' lineHeight='90px' />
-//   </React.Fragment>
-// )
-
-// export default App
-
 const Modes = {
   Numeric: 0,
   Alphanumeric: 1,
   Words: 2
-}
-
-const Widths = {
-  [Modes.Numeric]: 50,
-  [Modes.Alphanumeric]: 56,
-  [Modes.Words]: 400
 }
 
 const randomValue = (mode, length) => {
@@ -132,9 +35,8 @@ export const App = () => {
   const [mode, setMode] = useState(Modes.Numeric)
   const [length, setLength] = useState(6)
   const [timing, setTiming] = useState(30)
-  const [width, setWidth] = useState(50)
-  const [height, setHeight] = useState(64)
   const [value, setValue] = useState(randomValue(mode, length))
+  const [hinge, setHinge] = useState(true)
 
   const modeRef = useRef(mode)
   modeRef.current = mode
@@ -144,8 +46,6 @@ export const App = () => {
 
   useEffect(() => {
     setLength(mode === Modes.Alphanumeric ? 12 : 6)
-    setWidth(Widths[mode])
-    setHeight(64)
     setValue(randomValue(mode, length))
 
     const timing = mode === Modes.Alphanumeric ? 6000 : 3000
@@ -168,8 +68,7 @@ export const App = () => {
           words={mode === Modes.Words ? Words : undefined}
           length={length}
           timing={timing}
-          width={width}
-          height={height}
+          hinge={hinge}
         />
       </div>
       <form>
@@ -189,15 +88,12 @@ export const App = () => {
           </label>
         </fieldset>
         <fieldset>
-          <legend>Required Options</legend>
+          <legend>Options</legend>
           <label>
             Length <input type='number' name='length' value={length} min='1' onChange={e => setLength(Number(e.target.value))} />
           </label>
           <label>
-            Width <input type='number' name='width' value={width} min='1' onChange={e => setWidth(parseInt(e.target.value))} />
-          </label>
-          <label>
-            Height <input type='number' name='height' value={height} min='1' onChange={e => setHeight(parseInt(e.target.value))} />
+            <input type='checkbox' name='hinge' checked={hinge} onChange={e => setHinge(e.target.checked)} /> Hinge
           </label>
         </fieldset>
       </form>
