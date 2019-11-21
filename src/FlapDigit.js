@@ -2,13 +2,18 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { Flap } from './Flap'
 import styles from './styles.css'
-import classnames from 'classnames'
 
-export const FlapDigit = ({ className, value, prevValue, final, mode, ...restProps }) => {
-  const classes = classnames(className, styles.digit)
-
+export const FlapDigit = ({
+  className,
+  css,
+  value,
+  prevValue,
+  final,
+  mode,
+  ...restProps
+}) => {
   return (
-    <div className={classes} data-kind='digit' data-mode={mode}>
+    <div className={styles.digit} data-kind='digit' data-mode={mode}>
       <Flap {...restProps}>{value}</Flap>
       <Flap bottom {...restProps}>{prevValue}</Flap>
       <Flap key={`top-${prevValue}`} animated final={final} {...restProps}>{prevValue}</Flap>

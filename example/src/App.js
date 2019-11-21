@@ -160,9 +160,9 @@ export const App = () => {
 
   return (
     <div>
-      <div className='demoFlapper'>
+      <div>
         <FlapDisplay
-          className='demoFlapperDigit'
+          className='demoFlapper'
           value={value}
           chars={mode === Modes.Numeric ? Presets.NUM : Presets.ALPHANUM}
           words={mode === Modes.Words ? Words : undefined}
