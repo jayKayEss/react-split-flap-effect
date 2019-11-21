@@ -68,7 +68,13 @@ export const FlapDisplay = ({
   }, [digits, ...Object.values(restProps)])
 
   return (
-    <div id={id} className={className} css={css}>
+    <div
+      id={id}
+      className={className}
+      css={css}
+      aria-hidden='true'
+      aria-label={value}
+    >
       {render ? render({ ...restProps, children }) : children}
     </div>
   )
