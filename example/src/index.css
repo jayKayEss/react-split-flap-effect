@@ -3,16 +3,48 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: sans-serif;
 }
 
 .demoFlapper {
-  padding: 25px;
+  padding: 12px;
 }
 
 .demoFlapper [data-kind="digit"] {
   font-size: 30px;
 }
 
-/* .demoFlapper [data-kind="digit"][data-mode="alpha"] {
-  font-size: 64px;
-} */
+h2 {
+  font-size: 1rem;
+  margin: 0;
+  border-bottom: 1px solid black;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.full, .col {
+  padding: 6px;
+  box-sizing: border-box;
+}
+
+.full {
+  width: 100%;
+}
+
+.col {
+  width: 100%;
+}
+
+label {
+  padding-right: 12px;
+}
+
+@media (min-width: 768px) {
+  .col {
+    width: 50%;
+  }  
+}
