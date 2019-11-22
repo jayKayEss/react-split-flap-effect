@@ -35,6 +35,7 @@ const randomValue = (mode, length) => {
 export const App = () => {
   const [mode, setMode] = useState(Modes.Numeric)
   const [theme, setTheme] = useState('')
+  const [colorScheme, setColorScheme] = useState('')
   const [length, setLength] = useState(6)
   const [timing, setTiming] = useState(30)
   const [value, setValue] = useState(randomValue(mode, length))
@@ -64,7 +65,7 @@ export const App = () => {
     <div>
       <div>
         <FlapDisplay
-          className={`demoFlapper ${theme}`}
+          className={`demoFlapper ${theme} ${colorScheme}`}
           value={value}
           chars={mode === Modes.Numeric ? Presets.NUM : Presets.ALPHANUM}
           words={mode === Modes.Words ? Words : undefined}
@@ -96,6 +97,16 @@ export const App = () => {
               <option value='M'>M</option>
               <option value='L'>L</option>
               <option value='XL'>XL</option>
+            </select>
+          </label>
+          <label>
+            Color scheme:
+            <select name='colorScheme' value={colorScheme} onChange={(e) => setColorScheme(e.target.value)}>
+              <option value=''>Default</option>
+              <option value='light'>Light</option>
+              <option value='dark'>Dark</option>
+              <option value='lightBordered'>Light Bordered</option>
+              <option value='darkBordered'>Dark Bordered</option>
             </select>
           </label>
         </fieldset>

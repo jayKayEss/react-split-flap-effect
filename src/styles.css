@@ -27,7 +27,7 @@
   background-color: black;
   position: relative;
   display: inline-block;
-  box-sizing: border-box;
+  box-sizing: content-box;
   width: 1.1ch;
   height: 1em;
   font-family: sans-serif;
@@ -65,6 +65,7 @@
   background: inherit;
   z-index: 1;
   border-radius: inherit;
+  box-sizing: border-box;
 
   &.animated {
     animation-duration: 300ms;

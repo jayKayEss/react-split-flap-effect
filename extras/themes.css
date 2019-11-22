@@ -5,14 +5,14 @@
 .L [data-kind="digit"],
 .XL [data-kind="digit"] {
   font-family: 'Share', sans-serif;
-  width: 1.0ch;
+  width: 1.1ch;
 }
 
 .S [data-kind="digit"][data-mode="alpha"],
 .M [data-kind="digit"][data-mode="alpha"],
 .L [data-kind="digit"][data-mode="alpha"],
 .XL [data-kind="digit"][data-mode="alpha"] {
-  width: 1.2ch;
+  width: 1.35ch;
 }
 
 .S [data-kind="digit"][data-mode="words"],
@@ -40,4 +40,36 @@
 .XL [data-kind="digit"] {
   font-size: 78px;
   line-height: 82px;
+}
+
+.light [data-kind="digit"],
+.lightBordered [data-kind="digit"] {
+  color: #333;
+  background-color: #EEE;
+}
+
+.lightBordered [data-kind="digit"] {
+  border: 1px solid #DDD;
+  border-radius: 2px;
+  margin-right: 1px;
+}
+
+.lightBordered [data-kind="digit"]:last-child {
+  margin-right: 0;
+}
+
+.dark [data-kind="digit"],
+.darkBordered [data-kind="digit"] {
+  color: #EEE;
+  background-color: #333;
+}
+
+.darkBordered [data-kind="digit"] {
+  border: 1px solid #666;
+  border-radius: 2px;
+  margin-right: 1px;
+}
+
+.darkBordered [data-kind="digit"]:last-child {
+  margin-right: 0;
 }
