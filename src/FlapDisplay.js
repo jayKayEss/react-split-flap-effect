@@ -27,7 +27,7 @@ export const FlapDisplay = ({
   words,
   length,
   padding,
-  padStart,
+  padMode,
   render,
   ...restProps
 }) => {
@@ -37,7 +37,7 @@ export const FlapDisplay = ({
   const [children, setChildren] = useState([])
 
   useEffect(() => {
-    if (words) {
+    if (words && words.length) {
       setStack(words)
       setMode(Modes.Words)
     } else {
@@ -47,13 +47,15 @@ export const FlapDisplay = ({
   }, [chars, words])
 
   useEffect(() => {
-    if (words) {
+    if (words && words.length) {
       setDigits([value])
     } else {
-      const usePadStart = padStart || !!value.match(/^[0-9]*$/)
-      setDigits(splitChars(padValue(value, length, padding, usePadStart)))
+      const padStart = padMode === 'auto'
+        ? !!value.match(/^[0-9]*$/)
+        : padMode === 'start'
+      setDigits(splitChars(padValue(value, length, padding, padStart)))
     }
-  }, [value, chars, words, length, padding, padStart])
+  }, [value, chars, words, length, padding, padMode])
 
   useEffect(() => {
     setChildren(digits.map((digit, i) => (
@@ -84,7 +86,8 @@ FlapDisplay.defaultProps = {
   chars: Presets.NUM,
   padding: ' ',
   timing: 30,
-  hinge: true
+  hinge: true,
+  padMode: 'auto'
 }
 
 FlapDisplay.propTypes = {
@@ -96,7 +99,7 @@ FlapDisplay.propTypes = {
   words: PropTypes.arrayOf(PropTypes.string),
   length: PropTypes.number,
   padding: PropTypes.string,
-  padStart: PropTypes.bool,
+  padMode: PropTypes.string,
   timing: PropTypes.number,
   hinge: PropTypes.bool
 }

@@ -5,6 +5,8 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "@emotion/core": "^10.0.22",
+    "@emotion/styled": "^10.0.23",
     "prop-types": "^15.6.2",
     "react": "link:../react",
     "react-dom": "link:../react-dom",
