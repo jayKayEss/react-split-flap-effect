@@ -23,8 +23,8 @@
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",
-    "react": "^15.0.0 || ^16.0.0",
-    "react-dom": "^15.0.0 || ^16.0.0"
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
   },
   "devDependencies": {
     "@svgr/rollup": "^2.4.1",
@@ -45,6 +45,7 @@
     "eslint-plugin-standard": "^3.1.0",
     "gh-pages": "^1.2.0",
     "postcss-preset-env": "^6.7.0",
+    "prop-types": "^15.5.4",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "^1.1.4",
@@ -58,7 +59,8 @@
     "standard": "^14.3.1"
   },
   "files": [
-    "dist"
+    "dist",
+    "extras"
   ],
   "dependencies": {
     "classnames": "^2.2.6"
