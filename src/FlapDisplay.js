@@ -51,7 +51,7 @@ export const FlapDisplay = ({
       setDigits([value])
     } else {
       const padStart = padMode === 'auto'
-        ? !!value.match(/^[0-9]*$/)
+        ? !!value.match(/^[0-9.,+-]*$/)
         : padMode === 'start'
       setDigits(splitChars(padValue(value, length, padChar, padStart)))
     }
@@ -101,5 +101,6 @@ FlapDisplay.propTypes = {
   padChar: PropTypes.string,
   padMode: PropTypes.string,
   timing: PropTypes.number,
-  hinge: PropTypes.bool
+  hinge: PropTypes.bool,
+  render: PropTypes.func
 }
