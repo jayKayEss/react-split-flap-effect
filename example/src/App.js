@@ -31,7 +31,7 @@ export const App = () => {
   const [words, setWords] = useState(Words)
   const [length, setLength] = useState(6)
   const [timing, setTiming] = useState(30)
-  const [padding, setPadding] = useState(' ')
+  const [padChar, setPadChar] = useState(' ')
   const [padMode, setPadMode] = useState('auto')
   const [value, setValue] = useState('')
   const [hinge, setHinge] = useState(true)
@@ -89,7 +89,7 @@ export const App = () => {
           length={length}
           timing={timing}
           hinge={hinge}
-          padding={padding}
+          padChar={padChar}
           padMode={padMode}
         />
       </div>
@@ -171,19 +171,20 @@ export const App = () => {
             </div>
           </div>
           <div className='row'>
-            <label className='col25'><code>padding</code></label>
+            <label className='col25'><code>padChar</code></label>
             <div className='col75'>
-              <input type='text' name='padding' value={padding} size='1' disabled={mode === Modes.Words} onChange={e => setPadding(String(e.target.value).slice(0, 1))} />
+              <input type='text' name='padChar' value={padChar} size='1' disabled={mode === Modes.Words} onChange={e => setPadChar(String(e.target.value).slice(0, 1))} />
             </div>
           </div>
           <div className='row'>
             <label className='col25'><code>padMode</code></label>
             <div className='col75'>
-              <select name='padMode' value={padMode} disabled={mode === Modes.Words} onChange={(e) => setPadMode(e.target.value)}>
-                <option value='auto'>Automatic</option>
-                <option value='start'>Start (right align)</option>
-                <option value='end'>End (left align)</option>
-              </select>
+              <input id='padMode:auto' type='radio' name='padMode' value='auto' disabled={mode === Modes.Words} onChange={(e) => setPadMode(e.target.value)} />
+              <label for='padMode:auto'><code>auto</code></label>
+              <input id='padMode:start' type='radio' name='padMode' value='start' disabled={mode === Modes.Words} onChange={(e) => setPadMode(e.target.value)} />
+              <label for='padMode:start'><code>start</code></label>
+              <input id='padMode:end' type='radio' name='padMode' value='end' disabled={mode === Modes.Words} onChange={(e) => setPadMode(e.target.value)} />
+              <label for='padMode:end'><code>end</code></label>
             </div>
           </div>
           <div className='row'>

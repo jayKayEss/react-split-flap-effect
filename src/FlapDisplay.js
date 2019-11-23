@@ -11,11 +11,11 @@ const Modes = {
 
 const splitChars = v => String(v).split('').map(c => c.toUpperCase())
 
-const padValue = (v, length, padding, padStart) => {
+const padValue = (v, length, padChar, padStart) => {
   const trimmed = v.slice(0, length)
   return padStart
-    ? String(trimmed).padStart(length, padding)
-    : String(trimmed).padEnd(length, padding)
+    ? String(trimmed).padStart(length, padChar)
+    : String(trimmed).padEnd(length, padChar)
 }
 
 export const FlapDisplay = ({
@@ -26,7 +26,7 @@ export const FlapDisplay = ({
   chars,
   words,
   length,
-  padding,
+  padChar,
   padMode,
   render,
   ...restProps
@@ -53,9 +53,9 @@ export const FlapDisplay = ({
       const padStart = padMode === 'auto'
         ? !!value.match(/^[0-9]*$/)
         : padMode === 'start'
-      setDigits(splitChars(padValue(value, length, padding, padStart)))
+      setDigits(splitChars(padValue(value, length, padChar, padStart)))
     }
-  }, [value, chars, words, length, padding, padMode])
+  }, [value, chars, words, length, padChar, padMode])
 
   useEffect(() => {
     setChildren(digits.map((digit, i) => (
@@ -84,7 +84,7 @@ export const FlapDisplay = ({
 
 FlapDisplay.defaultProps = {
   chars: Presets.NUM,
-  padding: ' ',
+  padChar: ' ',
   timing: 30,
   hinge: true,
   padMode: 'auto'
@@ -98,7 +98,7 @@ FlapDisplay.propTypes = {
   chars: PropTypes.string,
   words: PropTypes.arrayOf(PropTypes.string),
   length: PropTypes.number,
-  padding: PropTypes.string,
+  padChar: PropTypes.string,
   padMode: PropTypes.string,
   timing: PropTypes.number,
   hinge: PropTypes.bool
