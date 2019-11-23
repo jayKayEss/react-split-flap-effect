@@ -179,11 +179,11 @@ export const App = () => {
           <div className='row'>
             <label className='col25'><code>padMode</code></label>
             <div className='col75'>
-              <input id='padMode:auto' type='radio' name='padMode' value='auto' disabled={mode === Modes.Words} onChange={(e) => setPadMode(e.target.value)} />
+              <input id='padMode:auto' type='radio' name='padMode' value='auto' checked={padMode === 'auto'} disabled={mode === Modes.Words} onChange={(e) => setPadMode(e.target.value)} />
               <label for='padMode:auto'><code>auto</code></label>
-              <input id='padMode:start' type='radio' name='padMode' value='start' disabled={mode === Modes.Words} onChange={(e) => setPadMode(e.target.value)} />
+              <input id='padMode:start' type='radio' name='padMode' value='start' checked={padMode === 'start'} disabled={mode === Modes.Words} onChange={(e) => setPadMode(e.target.value)} />
               <label for='padMode:start'><code>start</code></label>
-              <input id='padMode:end' type='radio' name='padMode' value='end' disabled={mode === Modes.Words} onChange={(e) => setPadMode(e.target.value)} />
+              <input id='padMode:end' type='radio' name='padMode' value='end' checked={padMode === 'end'} disabled={mode === Modes.Words} onChange={(e) => setPadMode(e.target.value)} />
               <label for='padMode:end'><code>end</code></label>
             </div>
           </div>
