@@ -1,10 +1,10 @@
 {
-  "name": "react-flapper",
+  "name": "react-split-flap-effect",
   "version": "1.0.0",
   "description": "Split-flap display for React",
   "author": "jayKayEss",
   "license": "MIT",
-  "repository": "jayKayEss/react-flapper",
+  "repository": "jayKayEss/react-split-flap-effect",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",

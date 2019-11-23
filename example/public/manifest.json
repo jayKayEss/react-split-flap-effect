@@ -1,6 +1,6 @@
 {
-  "short_name": "react-flapper",
-  "name": "react-flapper",
+  "short_name": "react-split-flap-effect",
+  "name": "react-split-flap-effect",
   "start_url": "./index.html",
   "display": "standalone",
   "theme_color": "#000000",

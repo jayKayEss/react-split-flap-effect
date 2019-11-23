@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-fragments */
 import React, { useEffect, useState, useRef } from 'react'
-import { FlapDisplay, Presets } from 'react-flapper'
-import 'react-flapper/extras/themes.css'
+import { FlapDisplay, Presets } from 'react-split-flap-effect'
+import 'react-split-flap-effect/extras/themes.css'
 import './index.css'
 
 const Words = [

@@ -1,6 +1,6 @@
 {
-  "name": "react-flapper-example",
-  "homepage": "https://jayKayEss.github.io/react-flapper",
+  "name": "react-split-flap-effect-example",
+  "homepage": "https://jayKayEss.github.io/react-split-flap-effect",
   "version": "0.0.0",
   "license": "MIT",
   "private": true,
@@ -8,7 +8,7 @@
     "prop-types": "^15.6.2",
     "react": "link:../react",
     "react-dom": "link:../react-dom",
-    "react-flapper": "link:..",
+    "react-split-flap-effect": "link:..",
     "react-scripts": "^1.1.4"
   },
   "scripts": {
