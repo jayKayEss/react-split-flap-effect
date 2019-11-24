@@ -45,7 +45,7 @@ Prop | Type | Default | Usage
 `css` | Object | | Style object to pass to [emotion](https://emotion.sh) or [styled-components](https://www.styled-components.com)
 `className` | string | | Class names to apply to the enclosing div
 `value` | string | _required_ | The value to display. Will be uppercased unless `words` is also supplied.
-`chars` | string | `Presets.NUM` | Single string containing the list of valid characters to display. The package provides `Presets.NUM` and `Presets.ALPHANUM` as starting points. Append whatever punctionation you need to those strings. It's also recommended to use a space as the first character, so that you'll be able to display blank values.
+`chars` | string | `Presets.NUM` | Single string containing the list of valid characters to display. The package provides `Presets.NUM` and `Presets.ALPHANUM` as starting points. Append whatever punctionation you need to those strings. The presets include space as the first character, which is recommended so that you'll be able to display blank values.
 `words` | Array[string] | | Optional array of strings to use as states for the flaps instead of single characters. When this is supplied, `chars` will be ignored, and `value` won't be split into individual characters.
 `length` | int | _required_ | The number of digits to display
 `padChar` | char | `' '` | The character to use to fill empty digits.
