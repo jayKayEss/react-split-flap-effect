@@ -52,11 +52,11 @@ Prop | Type | Default | Usage
 `padMode` | string | `'auto'` | Controls padding of values; `auto` will try to align numbers to the right and strings to the left; `start` will align values to the right and `end` will align values to the left.
 `timing` | int | `30` | Milliseconds to use for the rapid change animation. Numbers from `10`-`50` work best here. (This value doesn't affect the final flap of the animation, which is fixed at `300ms`.)
 `hinge` | bool | `true` | Controls whether to show the thin line through the center of flaps
-`render` | func | | A functional component that can be used to customize rendering. The individual flap digit components will be passed as the component's children. This can be used to insert things between the digits (for instance, you might want to show fixed symbols like dollar signs and colons between digits, rather than using an extra digit for these.)
+`render` | func | | A functional component that can be used to customize rendering. The individual flap digit components will be passed as the component's children. This can be used to insert things between the digits (for instance, you might want to show fixed symbols like decimal points and commas between digits, rather than using an extra digit for these.)
 
 ## Themes
 
-The package comes with a stylesheet in `extras/themes.css` with some pre-built themes. These themes will load a Google font called 'Share' that resembled real-life Solari displays.
+The package comes with a stylesheet in `extras/themes.css` with some pre-built themes. These themes will load a Google font called 'Share' that resembles real-life Solari displays.
 
 Import the stylesheet and apply some combination of the following in the `className` prop:
 
@@ -113,10 +113,10 @@ If you choose a custom font, pay close attention to the `line-height` of your te
 
 ## Caveats
 
-I'm using `clip-path` CSS property, which isn't well-supported on IE or Edge (Trident). On these clients the animation will look a little strange, but it shouldn't break the layout of your page or be unreadable.
+I'm using the `clip-path` CSS property, which isn't well-supported on IE or Edge (Trident). On these clients the animation will look a little strange, but it shouldn't break the layout of your page or be unreadable.
 
-Chrome in particular has some subpixel rendering issues that can cause the two halves of each letter to be slightly misaligned. You might also see some very minor screen tearing if you disable the hinge effect. Safari seems to deal better with these issues.
+Chrome in particular has some subpixel rendering issues that can cause the two halves of each letter to be slightly misaligned. You might also see some very minor screen tearing if you disable the hinge effect. Safari seems to deal better with these issues. (I also suspect the alignment issue might go away if you set fixed pixel widths on your digits, instead of the relative units I'm using for flexibility.)
 
 ## License
 
-MIT © [Justin Kerr Sheckler](https://github.com/jayKayEss)
+MIT © 2019 [Justin Kerr Sheckler](https://github.com/jayKayEss)
