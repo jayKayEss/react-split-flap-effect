@@ -167,6 +167,10 @@ describe('<FlapDisplay/>', () => {
         expect(digits.first().prop('stack')).toEqual(words)
       })
 
+      it('sets the mode param', () => {
+        expect(digits.first().prop('mode')).toEqual('words')
+      })
+
       it('sets the values', () => {
         expect(digits.first().prop('value')).toEqual('this')
       })
