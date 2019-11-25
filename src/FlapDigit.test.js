@@ -3,6 +3,10 @@ import { mount } from 'enzyme'
 import { FlapDigit } from './FlapDigit'
 import { Flap } from './Flap'
 
+jest.mock('./styles.css', () => ({
+  digit: 'digit'
+}))
+
 describe('<FlapDigit/>', () => {
   let props
   let el
@@ -27,6 +31,10 @@ describe('<FlapDigit/>', () => {
 
     it('exists', () => {
       expect(div.type()).toEqual('div')
+    })
+
+    it('has the digit class name', () => {
+      expect(div.hasClass('digit')).toBeTruthy()
     })
 
     it('has a data-kind attribute', () => {
