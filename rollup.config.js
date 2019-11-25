@@ -39,7 +39,7 @@ export default {
     url(),
     svgr(),
     babel({
-      exclude: 'node_modules/**',
+      exclude: 'node_modules/**'
     }),
     resolve(),
     commonjs()
