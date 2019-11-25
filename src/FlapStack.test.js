@@ -33,7 +33,9 @@ describe('<FlapStack/>', () => {
   })
 
   it('sets a timeout', () => {
-    jest.runAllTimers()
+    act(() => {
+      jest.runAllTimers()
+    })
     expect(setInterval).toHaveBeenCalledWith(expect.any(Function), props.timing)
   })
 
